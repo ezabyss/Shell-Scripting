@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# tell the shell to redirect a specific file descriptor for the duration of the script by using the exec command
+
+# redirecting all the output to a file
+
+exec 1> testfile
+
+echo "This is a test of redirecting all output"
+echo "from a script to another file."
+echo "without having to redirect every individual line"
+
+# exec command starts a new shell and redirects the STDOUT file descriptor to a file.
+# All output in the scripts that goes to STDOUT is instead redirected to the file.
+# We can also redirect the STDOUT in the middle of the script
+
+exec 2> error_file
+echo "This is the start of the script"
+echo "now redirecting all output to another location"
+
+exec 1> data_file
+echo "This output should go to the data_file"
+
+echo "but this should go to the error_file" >&2
+
+
+# Description:
+# exec command : to redirect any output 
+# even when STDOUT error is redirected, you can still specify the output from an echo statement to go to STDERR which in this case is till redireced to the 
+# once you redirect STDOUT or STDERR you can't easily redirect them back to their original location
+

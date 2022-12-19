@@ -1,0 +1,20 @@
+#!/bin/bash
+# purposely generate error message in your script using output redirection symbol
+# must precede the file descriptor number with an ampersand(&)
+
+# displays the text whereever the STDERR file descriptor for the script is pointing instead of the normal STDOUT
+#echo "This is an error message" >&2
+
+# testing STDERR messages
+echo "This is an error" >&2
+echo "This is normal output"
+
+# you won't notice any difference
+# by default, Linux directs the STDERR output to STDOUT. 
+# However, if you redirect STDERR when running the script any text directed to STDERR in the script wil be redirected
+
+# example
+# ./2_Temporary_redirection 2> filename
+# cat filename
+# the text that is displayed using STDOUT appears on the monitor, 
+# while the echo statement text sent to STDERR is redirected to the output file.

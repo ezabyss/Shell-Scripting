@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# lsof with file descriptor
+exec 3> testfile
+exec 6> data_file
+exec 7< error_file
+/usr/bin/lsof -a -p $$ -d0,1,2,3,6,7
+
+
+# this script creates three alternative file descriptors, two for output (3 and 6) and one for input (7)
+# REG means regular files on the file system

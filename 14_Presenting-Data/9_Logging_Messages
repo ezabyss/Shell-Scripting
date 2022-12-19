@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# to send both monitor and the file for logging
+# tee : instead of having to redirect output twice, 
+# tee command :T-connector for pipes : It sends data from STDIN to two destinations at the same time. Our destination is STDOUT.
+# The other destination is a file name specified on the tee command line
+
+date | tee testfile
+cat testfile
+
+# output appears in STDOUT, written to the file specified. 
+# by default, the tee command overwrite the output file on each use:
+
+who | testfile
+# append data to the file, you must use the -a option
+
+date | tee -a testfile
+cat testfile
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ls -al bad_file1 bad_file2 bad_file3 2> error_file 1> data_file
+
+# The shell redirects the normal output of the 1's command that would have gone to STDOUT to the "data_file" file using the 1> symbol
+# Any error messages that would have gone to STDERR were redirected to the 'error_file' file using the 2> symbol
+
+# Alternatively, if you want you can redirect both STDERR and STDOUT ouput to the same output file. " &> "
+
+ls -al bad_file1 bad_file2  &> error_data_file
+
+# "&>" symbol sends both data and error in same file. " ERROR messages(sorted top) then STDOUT "

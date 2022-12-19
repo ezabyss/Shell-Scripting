@@ -1,0 +1,21 @@
+#!/bin/bash
+# same technique as STDOUT and STDERR to redirect STDIN from the keyboard
+# informs the shell that it should retrieve input from the file instead of STDIN.
+# Redirection applies anytime the script requests input.
+# this is an excelledt technique to read data in files for processing in you scripts.
+
+exec 0< testfile
+count=1
+
+while read line
+do
+  echo "Line #$count: $line"
+  count=$[ $count + 1 ]
+done
+
+# Redirecting STDIN to a file, when the read command attempts to read from STDIN, 
+# it retrieves data from the file instead of the keyboard
+# common task for Linux system adminstrators is to read data from logfiles for processing. 
+# this is the easiest way to accomplish that task
+
+ 

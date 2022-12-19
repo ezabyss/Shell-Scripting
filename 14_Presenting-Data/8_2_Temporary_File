@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# -t option forces mktemp to create the file in the temporary directory
+# When you use tthis feature, the mktemp command returnsthe full pathname used to create the temporary file, not just te file nam.e
+
+# mktemp -t test.XXXXXX 
+# ls -al /tmp/text*
+# mktemp cmd returns the full pathname so, you can reference the temporary file from any directoyro n the linux system
+
+# creating a temp file in /tmp
+
+tempfile=`mktemp -t tmp.XXXXXX`
+echo "This is a test file. " > $tempfile
+echo "This is the second line of the test." >> $tempfile
+
+echo "The temp file is located at: $tempfile"
+cat $tempfile
+rm -f $tempfile

@@ -1,0 +1,87 @@
+#!/bin/bash
+# we can have upto 9 open file descriptors in the shell
+# six file descriptors are numbered from 3 to 9 available for us to use as either input or output redirection. 
+# we can assign an alternative descriptors to a file and then use them in our scripts 
+# once assigned remains permanent until reassign
+
+######## Creating Output File Descriptor #############
+
+# assign file descriptor for output by using the exec command
+# keeps normal output for the monitor and redirect special information to files such as log files
+
+exec 3> testfile
+echo "This should display on the monitor" 		# normal output goes to monitor
+echo "and this should be stored in the testfile" >&3	# >&3 this goes to testfile
+echo "Then this should be back on the monitor"
+
+#####################################################################################333
+
+######### Redirecting File Descriptor ##########################
+# we can assign an alternative file descriptor to a standard file descriptor and vice versa.
+
+# any output sent to file descriptor 3 will go to monitor
+exec 3>&1		# redirects file descriptor 3 to the current location of file descriptor 1
+exec 1>testfile		# any output sent to STDOUT  goes to testfile
+echo "This should store in the testfile"
+echo "Along with this line"
+
+exec 1>&3	#STDOUT back to original location(monitor)
+echo "Now things should be back to normal"
+
+############################################################################################################
+
+############### Creating input File Descriptor ############################
+# redirect STDIN to a file
+# redirecting input file descriptors
+exec 6<&0  		# file descriptor 6 is used to hold location for STDIN
+exec 0<testfile 	# redirects STDIN to a file
+count=1
+while read line		#all input from read command  now comes from testfile
+do
+  echo "Line #$count: $line"
+  count=$[ $count + 1 ]
+done
+
+exec 0<&6		# STDIN is back to normal
+read -p "Are you done now? " answer
+case $answer in
+Y|y) echo "Goodbye";;
+N|n) echo "Sorry, this is the end. ";;
+esac
+
+######### Creating a Read/ Write File Desciptor ############
+# we can also open a single file for both input and output. (both read from & write to a same file)
+# shell maintains internal pointer: where it is in the file. (reading or writing occurs where the pointer last left off)
+
+# testing input/output file desciptor
+exec 3<> testfile 		# assign file descriptor 3 for both input and ouput for testfile
+read line <&3			# read the first line in the file using assigned file descriptor
+echo "Read: $line"		# displays line from the file
+echo "This is a testline" >&3	# write s line to the file
+
+# The output shows the script read the first line in the testfile. 
+# Data written to the file overwrite the existing data
+# When the script write data to the file, it starts where the file pointer is located.
+# The read command reads the first line of data, 
+# so it left the file pointer pointing to the first character in the second line of data
+# When the echo statement outputs data to the file, it places the data at the current location of the file pointer, overwriting whatever data was there
+
+###### CLOSING FILE DESCRIPTOR #####
+# shell automaticall closes the opened file descriptor when script exist
+# to manually close a file descriptor : redirect to it to the special symbol &-
+
+exec 3> testfile
+echo "This is a test line of data">3
+exec 3>&-		# closes the descriptor 3 preventing it from being used any more in the script
+echo "This won't work" >&3
+
+
+## if you open the same output file later on in you script, the shelll replaces the existing file with a new file. (overwrites)
+exec 3> testfile
+echo "This is a test line of data" >&3
+exec 3>&-
+
+cat testfile
+exec 3> testfile
+echo "This'll be bad " >&3
+

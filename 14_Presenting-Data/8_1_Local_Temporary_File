@@ -1,0 +1,37 @@
+#!/bin/bash
+# linux system contains a special directory location reserved for temporary files.
+# /tmp directory for files that don't need to be kept indefinitely.
+# many distributions configure the system to clear the logfile automatically at bootup
+# all user have eprivileges to read/write files to the /tmp
+
+# mktemp : to create a unique temporary file in 
+
+# you need to do is specify a file name template.
+# template consists of any text filename, plus six X's appended to the end of the file name
+
+# mktemp testing.XXXXXX
+# mktemp testing.XXXXXX
+# mktemp testing.XXXXXX
+
+# mktemp : rplaces the 6 X's with a six character code to ensure the file name in unique in the directory
+ 
+# ls -l testing*
+
+# when we use mktemp : we save that filename in a variable so we can refer later
+
+# creating and using temp file
+
+tempfile=`mktemp temp_testfile.XXXXXX`
+exec 3>$tempfile
+
+echo "This script write to the tempfile $tempfile"
+
+echo "This is the first line" >&3
+echo "This is the second line." >&3
+echo "This is the last line." >&3
+exec 3>&-
+
+echo "Done creating temp file The contents are:"
+cat $tempfile
+
+rm -f $tempfile 2> /dev/null  

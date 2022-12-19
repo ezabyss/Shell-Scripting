@@ -1,0 +1,19 @@
+#!/bin/bash
+# you can redirect STDERR to a special file called the null file: 
+# the shell outputs redirected to the null file is not saved
+
+ls -al > /dev/null
+cat /dev/null
+
+# common way to supress any error message without saving
+ls -al badfile testfile 2> /dev/null
+
+# we can also use /dev/null of input redirection
+# becaue the /dev/null file contains nothing. it is often used by programmers to quickly remove data from existing file without having to remove the file and re-create it.
+
+cat testfile
+cat /dev/null > testfile
+cat testfile
+
+# the testfile still exists on the system, but now it is empty
+# commmon mehod to clear out log files that must remain in place for application operate
