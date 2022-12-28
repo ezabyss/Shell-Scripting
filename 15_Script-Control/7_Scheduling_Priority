@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# -20, the lowest value, is the highest priority and
+# 19, the highest value, is the lowest priority.
+# Just remember the phrase
+# "Nice guys finish last": The "nicer" or higher you are in value, the lower your chance of getting the CPU
+
+# nice command causes the script to run at a lower priority.
+# nice -n 10 ./script > filename &
+nice -n 10 ./
+
+#The "renice" command : automatically updates the scheduling priority
+# sometimes we need to change the priority of the commmand thats already running
+
+renice 10 -p 29504
+
+
+
+# the nice command prevents normal system users from increasing the priority of their commands. 
+# This is a safety features to prevent a user from startng all of his or her comandsas high priority.

@@ -1,0 +1,10 @@
+#!/bin/bash
+# to specify when a job should be run
+# syntax:::
+
+
+
+# min hour dayofmonth month dayofweek command
+# eg: 15 10 * * * command
+
+# visit crontab Guru

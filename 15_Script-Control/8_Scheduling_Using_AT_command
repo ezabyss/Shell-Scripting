@@ -1,0 +1,25 @@
+#!/bin/bash
+# at command allows you to specify a time when the Linux system will run a script.
+# submits the job to a queue withe directions on when the shell should run the job
+
+# The At daemon, atd, runs in the background and checks the job queue for jobs to run.
+# atd daemon checks a special directry on the system (usually /var/spool/at) for jobs submitted using the at command
+# by default atd daemon checks for jobs every 60 seconds.
+# if job is present, it checks the time 
+
+# syntas: at [ -f filename ] time #usually at command submits input from STDIN to the queue. You can specify a file name used to read commands(your script file) using -f parameter
+
+echo This scrip ran at `date`
+echo This is the end of the script >& 2
+
+
+# at -f ./1_Trap_Terminate_Signal 15:20
+# atq #to view the pending jobs
+# list pending jobs
+# at -f script.sh 
+
+# When a job is completed, nothing appears on the mnitor but the system generates an e-mail message. 
+# email shows the output generaged by the script.
+# if the script doesn't produce any output , it won't generate an e-mail message by default, indicating the job comepleted, 
+# even if the script doesn't generate any output.
+

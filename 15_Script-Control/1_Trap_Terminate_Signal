@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Ignore SIGINT and SIGTERM signals
+# displays a simple text message each time it detects either the SIGINT or SIGTERM
+
+trap "echo ' Sorry! i cannot stop the program, i am trapped Ctrl-C'" SIGINT SIGTERM
+
+echo This is a test program
+count=1
+while [ $count -le 10 ]
+do
+  echo "Loop #$count"
+  sleep 5
+  count=$[ $count + 1 ]
+done
+echo This is the end of the test program
+
+# each time the CTRL+C key combination was used, the script executed the echo statement specified in the trap command 
+# instead of ignoring the signal and allowing the shell to stop script.

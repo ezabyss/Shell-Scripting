@@ -1,0 +1,11 @@
+#!/bin/bash
+# run a shell script in bg mode from the CLI,just place an '&' ampersand  symbol after the script file(or command)
+# we can also run multiple background jobs
+
+./2_Removing_Trap & 	# this is previously written script
+
+### Multiple background jobs
+./1_Trap_Terminate_Signal &
+./2_Trapping_Script_Exit &
+
+# when executing outside just use '&' after the ./2_removing_Trap or specify above

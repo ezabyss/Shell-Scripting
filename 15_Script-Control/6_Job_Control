@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# stopped job can be resumed using a SIGCONT signal
+# JOB CONTROL :: the function of starting, stopping, killing, and resuming jobs.
+
+#### VIEWING JOBS ####
+# key command for job control is "jobs"
+
+echo "This is a test program $$" #$$ variable to display the PID that the Linux system assigns to the script
+count=1
+while [ $count -le 10 ]
+do
+  echo "Loop #$count"
+  sleep 5
+  count=$[ $count + 1 ]
+done
+echo "This is the end of the test program"
+
+# run it outside
+# ./15_Script_Control
+# ^Z
+# ./15_Script_Control > fileout &  # output 
+# jobs #to show status of the running and stopped jobs
+
+# DESCRIPTION
+# 1. display the PID that the Linux system assigns to the script.
+# 2. goes into a loop sleeping for 5 second 
+# 3. the first script is started from the command line interface and then stopped using the Ctrl+z key
+
+

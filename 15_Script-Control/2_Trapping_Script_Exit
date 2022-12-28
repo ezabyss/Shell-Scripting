@@ -1,0 +1,20 @@
+#!/bin/bash
+# we can trap the shell script exits.
+# convenient way to perform commands just as the shell finishes its job
+
+# trapping the script EXIT
+
+trap "echo 'See You! bye'" EXIT
+
+count=1
+while [ $count -le 5 ]
+do
+  echo " Loop #$count"
+  sleep 2
+  count=$[ $count + 1 ]
+done
+
+# When the script gets to the normal exit point, the trap is triggered 
+# it also gets triggered by premature exit (CTRL+C)
+
+

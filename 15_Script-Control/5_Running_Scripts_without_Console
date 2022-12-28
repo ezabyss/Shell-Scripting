@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# let the script run in background mode until it finishes, even if you exit the terminal session.
+# nohup command
+# nohup command runs another command blocking any SIGHUP signals that are sent to the process. This prevents the process from exiting when you exit your terminal session
+# it ignores theany SIGHUP signals sent by the terminal session if you close the session.
+
+
+# nohup ./scriptfile 
+# since the nohup commad disassociates the process from the terminal, the process loses the the STDOUT and STDERR output lnks.
+# it redirects the STDOUT and STDERR messages to "nohup.out"
+# contains all of the output that would normally be sent to the terminal monitor
+
+nohup ./2_Trapping_Script_Exit &
+
+
+
+
+#cat nohup.out
+# NOTE: If you run multiple HOHUP, output is appended to existing NOHUP.OUT file

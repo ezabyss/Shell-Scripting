@@ -1,0 +1,74 @@
+
+How the linux boot process works?
+There's is a specific order that Linux uses to start scripts at boot time, and knowing that process can help you in getting your 
+scripts at boot time, and knowing that process can helpp you int getting your script to perform the way you want.
+# The Boot Process
+After you turn on you Linux system, the linux kernel loads into memory and runs. the first thing it does is start the UNIX System
+V init process or the UPstart init process, depending upon your distribution and its version. This process is then responsible 
+for starting all other processes on the Linux system
+# System V init Process
+as part of the boot process, it reads the /etc/inittab file. The inittab file lists the system's run level. 
+Different Linux run levels start different programs and scripts.
+The Linux Run Levels - Debian Basesd Distribution
+
+Run level  Description
+0		Halt
+1		Single user mode
+2-5		Multi-user mode, with networking and a graphical X window sesssion
+6		Reboot
+The Ubuntu distribution doesnt even hve a /etc/inittabl file to set run levels. By default,
+Ubuntu goes to run level 2, You must creat a /etc/inittab file on an Ubuntu distribution, 
+if you want to change  the default run level
+Each run level defines what scripts the System V init process starts or stops. These startup script
+are shell scrits that start applications, providing the necessary environment variables for them to run.
+This is the part of the System V init based boot process where things start to get a little fuzzy, mainly because
+different Linux disributions place startup scripts in slightly different locations. Some distributions place
+startup scripts in the /etc/rc#.d directory, where # stands for the run level. Others use the /etc/init.d directory 
+and still others use the /etc/init.d/rc/d directory. Usually a quick glance in your /etc directory 
+structure can easily determine what format your distribution uses.
+
+# upstart init process
+The upstart initi process is anewer standard for managing service processes that many LInux distribution are now moving toward.
+Upstart is not focused on system run levels. but is instead focused on events. Such as system boot. 
+In startup, a system boot is called a startup event
+Upstart uses files located in either the /etc/event.d or the /etc/init directory to start processes, depending upon your distribution and its version. In order to maintain backward compatibility, many Upstart implementations still call 
+the older System V init scripts from /etc/init.d and/or /etc/rc#.d
+
+The Upstart init process standard is still highly evolving at this point in time. For the scripts you create and want to start
+during a system startup even, it would be prudent to use the older System V init process method. 
+
+# Defining your scripts
+It's best not to mess with the individual startup script files in your Linux distribution provide a local startup file specifically 
+to allow the ystem administrator to enter scripts to run at boot time. Of course, the name and location of this file are different in different 
+Linux distributions.
+The linux local startup file locaitons
+
+Distribution 		File location
+debian			/etc/init.d/rc.local
+Fedora			/etc/rc.d/rc.local
+Mandriva		/etc/rc.local
+spenSuse		/etc/init.d/boot.local
+Ubuntu			/etc/rc.local
+
+# Inside the local startup file, you can either specify specific commands and statements, or enter any scripts you want started at boot time.
+Remember that if you use a script, you'll need to specify the full pathname for the script so that the system can find it at boot time.
+#CAUTION
+Different Linux distribution also execute the local startup script at different points in the boot process,
+Sometimes, the script is runbefore things usch as network support have been starte. Consult your specific Linux distribution documentation to 
+determine when the local startup script is run in your distribution
+
+# starting with a new shell
+
+Each user's home directory contains two files that the bash shell uses to automatically start scripts and set environment variables.
+- The .bash_profile file
+- The .bashrc file
+The bash shell runs the .bash_profile file when a new shell is run as a reslt of a new login place any scripts that you want run at login time in this file
+Place any scripts that you want run at login time in this file
+The bash shell runs the .bashrc file any time a new shell is started, including when a new login occurs.
+You can test this by adding a simle echo statemetn to the .bashrc file in you home directory and then starting a new shell
+
+if you want to run a script for every user on the system, most Linux distributions provide the /etc/bashrc file 
+#NOTE
+there's no period in front of the bashrc filename. 
+The basic shell executed the statement in this file everytime any user on the system starts a new bash shell
+
