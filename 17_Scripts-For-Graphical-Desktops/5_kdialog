@@ -1,0 +1,4 @@
+#!/bin/bash
+
+kdialog --checklist "Items I need" 1 "Toothbrush" on 2 "Toothpaste" off 3 "Hair brush" on 4" Deodorant" off 5 "Slippers" off
+

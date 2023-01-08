@@ -1,0 +1,51 @@
+>> stub function: function that doesn't contain any commands yet.
+The core of shell script menu is the case command.
+The case command allows you to paint a menu, using the standard echo command, and read a response from the user, using the read command.
+The case command then selects the appropriate shell script function based on the value entered.
+
+The dialog program provides several prebuilt text widgets for creating Windows-like objects on a text-based terminal emulator.
+You can create dialog boxes for displaying text, entering text, and choosing files and dates by using the dialog program.
+This helps bring even more life to your shell script.
+
+If you're running your shell scripts in a graphical X windows environment. You can usitlize even more tools in your interactive scripts.
+For the KDE desktop, there the kdialog program.
+This program provides simple commands to create windows widgets for all of the basic windows functions.
+For the GNOME desktop, there are the gdialog and zenity programs.
+Each of these programs provides windows wdgets that blend into the GNOME desktop just like a real Windows application.
+
+>>> msgbox Widget
+dialog --msgbox text height width
+dialog --title Testing --msgbox "this is a test" 10 20
+
+>> yesno widget
+dialog --title "please answer" --yesno "is this thing on?" 10 20
+
+>> inputbox widget
+dialog --inputbox "Enter your age:" 10 20 2> age.txt
+
+>> textbox widge
+dialog --textbox /etc/passwd 15 45
+
+>> The menu Widget
+dialog --menu "Sys Admin Menu" 20 30 10 1 " Display disk space" 2"Display users" 3 Display memory usage"| 4 "Exit" 2> test.txt
+
+# the first parameter defines a title for themnu. The next two parameters define the height and width of themnu window, while the third parameter defines  the number of menu items that appear in the window at one time. 
+# If there are more menu items, you can scroll through them using the arrows key.
+
+>> The fselect Widget
+dialog --title "Select a file" --fselect $HOME/ 10 50 2>file.txt
+# extremely handy when working with file names
+
+#GETTING GRAPHIC
+# KDE and GNOME desktop environments
+# KDE environment
+ allows you to produce windows-quality user interfaces directly from your shell scripts
+>> includes kdialog package by default. uses the kdialog command to generate standard windows.
+# it appears as a separate window in the KDE desktop, not inside the terminal emulator session
+
+# GNOME Environment
+GNOME supports two popular packages that can generate standard windows
+- gdialog
+- zenity
+zenity is the most commanly available package found in most GNOME desktop linux distribution 
+

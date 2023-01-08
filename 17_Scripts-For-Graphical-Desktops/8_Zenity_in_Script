@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# using zenity to create a menu
+
+temp=`mktemp -t temp.XXXXXX`
+temp2=`mktemp -t temp2.XXXXXX`
+
+function diskspace {
+  df -k > $temp
+  zenity --text-info --title "Disk space" --filename=$temp --width 750 --height 10
+}
+
+function whoseon {
+  who > $temp
+  zenity --text-info --title "Logged in user" --filename=$temp --width 500 --height 10
+}
+
+function memusage {
+  cat /proc/meminfo > $temp
+  zenity --text-info --title "memory usage" --filename=$temp --width 300 --height 500
+}
+
+while [ 1 ]
+do
+zenity --list --radiolist --title "Sys Admin Menu" --column "Select" --column "Menu Item" False "Display diskspace" False "Display users" False "Display memory usage" False "Exit" > $temp2
+if [ $? -eq 1 ]
+then
+  break
+fi
+
+seleciton=`cat $temp2`
+case $selection in
+"Display disk space")
+  diskspace ;;
+"Display users")
+  whoseon ;;
+"Display memory usage")
+  memusage ;;
+Exit)
+  break;;
+*)
+  zenity --info "Sorry, invalid selection"
+esac
+done
+
+# Zenity doesn't support the menu dialog window, we used radiolist type window for the main menu
+# DESCRIPTION
+# The radiolist uses two columns, each with a column heading.
+# The first column includes the radio buttons to select. The second column is the item text.
+# The radio list also doesn't use tags for the items.
+# When you select an item, the full text of the item is returned to STDOUT.
+# We must use the full text from the items in the case options.
+# you need to use double qotation " " if there is space in option

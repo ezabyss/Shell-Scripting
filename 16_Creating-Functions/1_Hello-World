@@ -1,0 +1,15 @@
+#!/bin/bash
+function print_hello_world {
+  echo "Hello! World from function"
+}
+
+count=1
+while [ $count -le 5 ]
+do
+  print_hello_world
+  count=$[ $count + 1 ]
+done
+
+echo "End of the loop"
+print_hello_world
+echo "Bye! End of Script"

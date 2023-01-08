@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Please select any widget"
+
+PS3="Enter option: "
+select option in "Msgbox Widget" "YesNo Widget" "InputBox Widget" "Textbox Widget" "Menu Widget" "Fselect Widget" "Exit Program"
+do
+  case $option in
+  "Exit Program")
+    break ;;
+  "Msgbox Widget")
+    dialog --title Hello --msgbox "Hello! There" 10 20 ;;
+  "YesNo Widget")
+    dialog --title "How you feeling?" --yesno "Are you excited? " 10 20 ;;
+  "InputBox Widget")
+    dialog --inputbox "Enter your age: " 10 20 2> age.txt ;;
+  "Textbox Widget")
+    dialog --textbox /etc/passwd 15 45 ;;
+  "Menu Widget")
+    dialog --menu "Sys Admin Menu" 20 30 10 1 "Display disk space" 2 "Display users" 3 "Display memory usage" 4 "Exit" 2> test.txt ;;
+  "Fselect Widget")
+    dialog --title "Select a file" --fselect $Home/ 10 50 2>file.txt ;;
+  *)
+    clear
+    echo "Sorry, wrong selection" ;;
+  esac
+done
+clear

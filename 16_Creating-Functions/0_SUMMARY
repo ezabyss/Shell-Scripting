@@ -1,0 +1,27 @@
+Shell scripts functions allow you to place script code that's repeated throughout the script in a single place. 
+Instead of having to rewrite blocks of code, you can create a function containing the code block, 
+and then just reference the function name in you script.
+The bash shell jumps to the function code block whenever it sees the function name used in the script.
+
+You can even create script function that return values. This allows you to create function that interact with the script, returning both numeric and character data.
+Script function can return numeric data by using the exit status of the last command in the function. or usingthe return command.
+The return command allows you to programmatically set the exit status of your function to a specific value based on the results of the function
+
+Functions can also return values using the standard echo statement. 
+You can capture the output data using the backtick character as you would any other shell command.
+This enables you to return any type of data from a function, including strings and floating-point numbers.
+
+You can use shell variables within your functions, assigning values to variables and retrieving values from existing variable.
+This allows you to pass any type of dat both into and out of a script function from the main script program. Functions also allow you to define local variables which are accessible only from within the function code block. 
+Local variable allow you to create self-contained functions, which don't interfere with any variables or processes used in the main shell script.
+
+Function can also call other functions, including themselves.When a function calls itself, it is called recursion. 
+A recursive function often has a base value that is the terminal value of the function. The function continues to call itself with a decreasing paramete value until the base value is reached.
+
+If you use lots of function in your shell scripts you can create library files of script functions.
+The library files can be included in any shell script file by using the source command, or its alias, the dot operator. 
+This is called sourcing the library file.
+The shell doesn't run the library file but makes the functions available within the shell that runs the script.
+You can directly create function the command line or you can add them to your .bashrc file so that they are available for each new shell session you start.
+This is a handy way to create utilizes that can be used no matter what your path environment variable is set to.
+

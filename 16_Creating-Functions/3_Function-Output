@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# we can capture the output of function to a shell variable
+# result=`func-name`
+
+function triple {
+  read -p " Please enter a number: " value
+  echo $[ $value * 2 ]
+}
+
+result=`triple`
+echo "The value is $result"
+
+# Note: using this technique, you can also return floating point and string values, 
+# this an extremely versatile method for returning values from functions.
+

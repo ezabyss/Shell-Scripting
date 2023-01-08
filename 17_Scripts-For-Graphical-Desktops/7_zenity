@@ -1,0 +1,4 @@
+#!/bin/bash
+
+zenity --calendar
+zenity --file-selection

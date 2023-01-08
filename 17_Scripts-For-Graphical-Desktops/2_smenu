@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# select command allows you to create a menu from a single command line and then retrieve the entered answer and automatically process it.
+
+function diskspace {
+  clear
+  df -k
+}
+
+function whoseon {
+  clear
+  who
+}
+
+function memusage {
+  clear
+  cat /proc/meminfo
+}
+
+#Select command displays each item in the list as a numbered option and then displays a special prompt defined by the PS3 environment variable, for the selction
+PS3="Enter option: "   
+select option in "Display Diskspace" "Display logged on users" "Display memory usage" "Exit Program"
+do
+  case $option in 
+  "Exit Program")
+    break ;;
+  "Display Diskspace")
+    diskspace;;
+  "Display logged on users")
+    whoseon ;;
+  "Display memory usage")
+    memusage ;;
+  *)
+    clear
+    echo "Sorry, wrong selection" ;;
+  esac
+done
+clear
+
+# rememeber that the result value stored in the variables is the entire text string and not the number associated with the menu item. 
+# The text string values are what you need to comapre in your case statments.

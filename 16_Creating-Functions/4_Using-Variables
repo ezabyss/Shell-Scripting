@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# the name of function is defined in $0 variable
+# $# : to determine the number of variable passed to the function
+
+function add {
+  if [ $# -eq 0 ] || [ $# -gt 2 ]
+  then
+    echo "Sorry! No number to add or out of range"
+  elif [ $# -eq 1 ]  
+  then
+    echo $[ $1 + $1 ]  
+  else
+    echo $[ $1 + $2 ]
+  fi
+}
+
+echo -n " Lets add two number 5 & 3 : "
+result=`add 5 3`
+echo $result
+
+echo -n " Lets add only one number 5 : "
+result=`add 5`
+echo $result
+
+echo -n " Lets add no number : "
+result=`add`
+echo $result
+
+echo -n " Lets add three number 5 10 15 : "
+result=`add 5 10 15`
+echo $result
+
+
+

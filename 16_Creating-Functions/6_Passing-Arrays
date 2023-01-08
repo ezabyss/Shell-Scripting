@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# array variable 
+
+function print_array {
+  local newarray
+  newarray=(`echo "$@"`)
+  echo " The new array value is: ${newarray[*]} "
+}
+
+my_array=(1 2 3 4 5)
+echo " The original array is ${my_array[*]} "
+print_array ${myarray[*]}
+
+
+echo " ---------------------------------------------- "
+echo "  SUMMING ARRAY "
+echo " ---------------------------------------------- "
+# adding values in an array
+
+function sum_array {
+  local sum=0
+  local newarray
+  newarray=(`echo "$@"`)
+  for value in ${newarray[*]}
+  do
+    sum=$[ $sum + $value ] 
+  done
+  echo $sum
+}
+
+myarray=(1 2 3 4 5)
+echo " The original array is: $(myarray[*]} "
+arg1=`echo ${myarray[*]}`
+result=`sum_array $arg1`
+echo "The result is $result"

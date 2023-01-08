@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# scope of variable : Local & Global
+echo " ---------------------------------"
+echo " LOCAL VARIABLES "
+echo " ---------------------------------"
+# local variablename=value
+
+function trpl {
+  local temp=$[ $value + 5 ]
+  result=$[ $temp * 3 ]
+}
+temp=2
+value=3
+
+trpl
+echo " The result is $result "
+if [ $temp -gt $value ]
+then
+  echo " temp is larger"
+else
+  echo " temp is smaller"
+fi

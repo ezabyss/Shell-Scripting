@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Default exit status : $? : is returned by the last command in the function. 
+# returns '0' if sucessfully run last command. 
+# returned '1' if fails to run the last command.
+
+# Using default exit status
+echo "------------------------------"
+echo "USING DEFAULT EXIT STATUS !?"
+echo "------------------------------"
+
+func_check() {
+  echo " Displaying the non-existent file"
+  ls -l badfile
+}
+echo "  Calling the function"
+echo "  The exit status is : $?"
+
+echo "------------------------------"
+echo "USING RETURN COMMAND"
+echo "------------------------------"
+
+function double() {
+  read -p "Please enter a number: " value
+  echo " --Doubling your number-- "
+  return $[ $value * 2 ]
+  
+}
+double
+echo "The new value is $?"
+
+# You cannot use this method to return number larger than 255 and string
+# it is important to show the exit status on time
