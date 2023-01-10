@@ -14,4 +14,4 @@ print "This concludes the listing"
 }
 
 # run outside
-# gawk -f 5_script /etc/passwd
+# gawk -f 05_script /etc/passwd

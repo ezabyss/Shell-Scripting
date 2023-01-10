@@ -3,7 +3,7 @@
 { print $1 "'s home directory is " $6 }
 
 # type this outside
-# gawk -F: -f 4_gawk_script /etc/passwd
+# gawk -F: -f 04_gawk_script /etc/passwd
 
 # Running Scripts Before Processing
 
