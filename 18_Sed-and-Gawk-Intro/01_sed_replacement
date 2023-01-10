@@ -1,0 +1,31 @@
+#!/bin/bash
+# sed options script file
+# -e script	:: Add commands specified in the script to the commands run while processing the input.
+# -f file	:: Add the commands specified in the file to the commands run while processing the input.
+# -n		:: Don't produce output for each command, but wait for the print command.
+
+
+# Defining an Editor command in command Line
+# echo "This is a old test" | sed 's/old/new/'
+#>> s command substitues a second text string for the first text string pattern specified between the forward slashes.
+
+echo " --- Replacing Single Word --- "
+sed -e 's/fox/monkey/' data_file
+echo ""
+
+# using multiple editor commands in the command line.
+# to execute more than one command from the sed command line just use the -e option
+echo " --- Replacing Multiple word --- "
+sed -e 's/brown/green/; s/dog/cat/' data_file
+echo " "
+
+echo " --- More conveniently --- "
+sed -e '
+s/brown/green/
+s/fox/elephant/
+s/lazy/fast/
+s/quick/slow/
+s/dog/cat/' data_file
+
+
+

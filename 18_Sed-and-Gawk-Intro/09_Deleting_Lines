@@ -1,0 +1,23 @@
+#!/bin/bash
+echo " ******* sed editor doesn't make changes to the original file **********"
+# Delete all lines
+echo " --------- DELETE ALL LINES (sed 'd' data_file) ------------ "
+sed 'd' data_file
+
+echo "---------------------------------------------"
+echo " --------- Delete 3rd line (sed '3d' data_file)------------"
+sed '3d' data_file
+
+echo " -------------------------------------------"
+echo " ---------- Delete 2nd and 3rd line (sed '2,3d' data_file)------"
+sed '2,3d' data_file
+
+echo " -------------------------------------------"
+echo " ---------- Delete all after 3rd line (sed '3,\$d' data_file)-------"
+sed '3,$d' data_file
+
+echo " -------------------------------------------"
+echo " ------- Delete only matching pattern (sed '/Five The/d data_file) ------"
+sed '/Five The/d' data_file		#search for 'Five The'
+
+

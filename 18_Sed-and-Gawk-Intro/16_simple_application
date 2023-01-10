@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# A cool application of the read command is to use it in conjuction with a delete command to replace a placeholder in a file with data from another file. 
+echo "--- Greeting Template ---"
+cat greeting
+
+echo ""
+sed '/INcustomer_list/{
+r INcustomers
+d
+}' greeting
+
+### the form greeting uses the generic placeholder INcustomer_list
+# To insert the list of people after the placeholder,
+# all you need to do is use the read command
+# However, this still leaves the placeholder text in the output
+# to remove that, just use the delete command.

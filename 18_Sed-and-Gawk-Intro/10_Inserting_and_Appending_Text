@@ -1,0 +1,28 @@
+#!/bin/bash
+# insert command (i) adds a new line before the specified line
+# append command (a) adds a new line after the specified line
+# sed '[address]command\new line'
+echo "--- Inserting Before ----"
+echo "Test Line 2" | sed 'i\Test Line 1' 	#inserts before
+echo ""
+
+echo "--- Inserting After ---"
+echo "Test Line 2" | sed 'a\Test Line 1'	#inserts after 
+echo ""
+
+echo " --- Inserting line before line 3 ---"
+sed '3i\Hello ! Appended Line before 3rd line' data_file
+echo ""
+
+echo "--- Inserting line After line 3 ---"
+sed '3a\ Hello Again Appended Line after 3rd line' data_file
+echo ""
+
+echo " --- Appending Line at Last --- "
+sed '$a\ Hello appended Line at last' data_file
+echo ""
+
+echo " --- Append more than one line --- "
+sed '4i\
+Hello There.\
+Hi There.' data_file

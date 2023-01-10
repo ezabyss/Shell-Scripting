@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# by default: sed editor apply to all lines of the text data.
+# use addressing :to apply a command to a specific line or group of lines 
+# two forms of line addressing in the sed editor
+# numeric range of lines
+# text pattern that filters out a line
+
+# Numeric Line Addressing
+echo " ---------------------------------------------------- "
+echo " ------------------ Using Line Addressing ----------- "
+echo " ---------------------------------------------------- "
+
+echo " ------- Modifies 2nd line only --------------------- "
+# it only modifies in the second line
+sed '2s/dog/cat/' data_file
+
+echo " ------- Modifies 2nd and 3rd line --------------------- "
+# it modifies in 2nd and third line
+sed '2,3s/dog/cat/' data_file
+
+echo " --------Group of lines starting at some point----------- "
+# it modifies group of lines starting at some point within the text.
+sed '2,$s/dog/cat/' data_file
+
+echo " ---------------------------------------------------------- "
+echo " ------------------ Using Text Pattern Filters -------------"
+echo " -----------------------------------------------------------"
+
+# 
+sed '/Wobheek/s/bash/csh/' /etc/passwd
+
+

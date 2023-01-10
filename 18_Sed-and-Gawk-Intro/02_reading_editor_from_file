@@ -1,0 +1,12 @@
+#!/bin/bash
+
+s/brown/green/
+s/fox/elephant/
+s/dog/cat/
+
+### if we have many seds commands to process, it is easier to just store them in a separate file.
+## Use the -f option to specify the file in the sed command
+
+# sed -f 2_reading_editor_from_file data_file 	#execute this in commmand line
+# this command executes the editor command from this file and replaces as specified
+

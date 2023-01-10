@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Useful for filtering specific values
+echo "--------------------- Filtering Specific value: Ubuntu ---------------"
+sed '/ubuntu/s/bash/csh/' /etc/passwd
+
+# Grouping Commands
+echo " --------------------  Grouping Commands (change 2nd line only)------------------- "
+sed '2{
+s/fox/elephant/
+s/dog/cat/
+}' data_file
+
+echo " --------------------  Grouping Commands (change after 3rd line) ----------------------- "
+sed '3,${
+s/brown/green/
+s/lazy/active/
+}' data_file  
+
+

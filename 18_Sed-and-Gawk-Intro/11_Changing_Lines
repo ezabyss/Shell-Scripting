@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo " --- Change 3rd line: specifying number ---"
+sed '3c\Changed line using line number..' data_file
+echo " "
+
+echo " --- Change 4th line: text pattern ---"
+sed '/Four The/c\Changed line using text pattern.' data_file 	#search for 'Four The' and replaces it
+echo " "
+
+echo " --- Change using address range (2nd and 3rd)---"
+sed '2,3c\Changed line using address range.' data_file

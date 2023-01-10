@@ -1,0 +1,44 @@
+
+gawk '{print $1}' data_file
+
+echo "---------------------- SPECIFYING FIELD SEPERATOR ':' "
+
+gawk -F: '{print $1}' /etc/passwd
+
+echo "----------------------  MULTIPLE COMMANDS IN PROGRAM SCRIPT"
+
+echo "My name is Wobheek" | gawk '{$4="Owobheek"; print $0}'
+
+
+
+# ####### 		DESCRIPTION 		#############
+# gawk command format
+# gawk options program file
+
+# gawk options
+# Option		Description
+# -f fs			Specify a file separator for delineating data fields in a line.
+# -f file		Specify a file name to read the program from.
+# -v var=value		Define a variable and default value used in the gawk program.
+# -mf N			Specify the maximum number of fields to process in the data file
+# -mr N			Specify the maximum record size in the data file
+# -W keyword		Specify the compatibility mode or warning level for gawk
+# To terminate the gawk program, you must signal that the data stream has ended.
+# Ctrl+D key combination generates an EOF character in bash.
+
+# Using Data Field Variables
+# $0 represents entire line of text
+# $1 represents the first data field in the line of text.
+# $2 represents the second data field in the line of text.
+# $n represents the nth data field in the line of text.
+
+
+# While reading a file that uses a different field separation character, 
+# you can specify it by using the -F option
+
+###### Using Multiple commands in the Program script
+# The first command assigns a value to the $4 field variable.
+# The second command then prints the entire data field.
+# gawk program replaced the fourth data field in the original text with the new value
+
+#

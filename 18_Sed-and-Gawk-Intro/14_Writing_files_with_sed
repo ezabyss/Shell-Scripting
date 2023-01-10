@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#writing to a file : [address]w filename
+
+echo " --- Writes the first two line to test_file --- "
+sed '1,2w test_file' data_file
+
+echo " --- From test file --- "
+cat test_file
+
+echo ""
+echo " --- only writing Incustomer from customer list --- "
+sed -n '/IN/w INcustomers' customer_list
+cat INcustomers
+
+echo " "
+# Reading Data from a file [address]r filename
+echo " ---- Reading Data from a file --- "
+echo " Reads 3rd line from data_file and write it to test_file "
+sed -n '3r test_file' data_file
+

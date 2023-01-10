@@ -1,0 +1,14 @@
+#!/bin/bash
+# Transform command performs a one-to-one mapping of the inchars and the outchars values
+# 1st character in the inchars is converted to the first character of the outchars.
+# [address]y/inchars/outchars
+# Transform command is a global command (it changes every occurences)
+
+echo " --- Changed the 234 number with 789 --- "
+sed 'y/234/789/' data_file
+echo " "
+
+echo " Changes Every occurences "
+echo " This 1 is a test of 1 try." | sed 'y/123/456/'
+
+

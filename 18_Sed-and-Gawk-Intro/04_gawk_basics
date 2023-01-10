@@ -1,0 +1,17 @@
+
+# Reading the Program from a file
+{ print $1 "'s home directory is " $6 }
+
+# type this outside
+# gawk -F: -f 4_gawk_script /etc/passwd
+
+# Running Scripts Before Processing
+
+gawk 'BEGIN { print "The data_file contents: " } { print $0 } ' data_file
+
+# BEGIN keyword only applies the specified script before it processes any data.
+
+
+## Running Scripts after Processing data
+gawk 'BEGIN { print "The data_file contents: " } {print $0} END { print "End of File" }' data_file
+# it executes the END script at last.

@@ -1,0 +1,50 @@
+# run these command outside
+
+# substitution flag
+# it replaces the multiple lines but only the first occurence
+# s/pattern/replacement/flags
+
+echo " --- Simple Substitution --- "
+sed 's/fox/wolf/' data_file
+echo ""
+
+# g	- indicates all occurrences
+# p	- indicates that the contents of the original line should be printed
+# w 	- write the results ofthe substitution to a file
+
+echo " --- Replacing second occurences in each line ---"
+sed 's/dog/cat/2' data_file
+# 2 : replaces the pattern in the second occurences in each line.
+echo ""
+
+echo " --- Replacing every occurences (g flag) --- "
+sed 's/dog/cat/g' data_file
+# g: replaces every occurences
+echo ""
+
+echo " --- Supressing and printing only modified line ---"
+sed -n 's/dog/cat/p' data_file
+echo ""
+
+# -n : suppreses output from the sed editor
+# p : outputs any line that has been modified.
+
+echo " --- Stores the output in anothe file ---"
+sed 's/dog/cat/w test_file' data_file
+# stores the ouput in data_file 
+echo ""
+
+#Replacement Character
+# to change Cshell for the bash shell in the /etc/passwd file
+echo " ---- Replacement Character  ---- "
+sed 's/\/bin\/bash/\/bin\/csh/' /etc/passwd
+echo ""
+# forward slash is used as the string delimiter
+# backward slash to excape it
+# its confusing : to solve this problem
+
+echo " --- Much easier replacement --- "
+sed 's!/bin/bash!/bin/csh!' /etc/passwd
+# exclamation point is used for the string delimiter, making the pathnames much easier to read and understand
+
+

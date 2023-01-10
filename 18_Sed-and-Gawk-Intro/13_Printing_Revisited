@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# lower p 	 : to print a text line
+# equal sign 	 : to print line number
+# l (lowercase L): to list a line 
+
+# -n : suppresses all the other lines in a data stream and only prints matching
+
+echo "--- Printing Lines ---"
+echo "this is a test" | sed 'p'
+echo ""
+
+echo "--- Printing Lines that contain matching text from text pattern ---"
+sed -n '/Four/p' data_file 	#searchess for Four
+echo ""
+
+echo " --- Subset lines (2 to 4) ---"
+sed -n '2,4p' data_file
+echo ""
+
+echo " --- Showing lines before it gets altered --- "
+sed -n '/3/{
+p
+s/dog/elephant/p
+}' data_file
+echo ""
+
+echo " --- Printing Line numbers (sed '=' file_name) ---"
+sed '=' data_file
+echo ""
+
+echo "--- Printing Line numbers for matching pattern ---"
+sed -n '/Four The/{
+=
+p
+}' data_file
+
+
+#Listing Lines
+# list command(l) allows you to print both the text and non printable ASCII characters in a data stream.
+echo "--- Listing Lines including ASCII characters ---"
+sed -n 'l' data_file
+echo " --- \$ : means Newline, \t means tab ---"
+

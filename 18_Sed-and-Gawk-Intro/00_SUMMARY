@@ -1,0 +1,8 @@
+
+sed editor is a stream editor that quickly processes data on the fly as it reads it. 
+we must provide the sed editor with a list of editing commands, which it applies to the data.
+
+The gawk program is a utility from the GNU organization that mimics and expands on the functionality of the Unix awk program. 
+The gawk program contains a built-in programming language that you can use to write scripts to handle and process data. 
+We can use the gawk program to extract dat elements from large data files and output them in just about any format we desire.
+Processing large og files a snap, as well as creating custom reports from data files
