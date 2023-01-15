@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Pipe Symbol: allows you to specify two or more patterns that th e regular expression engine uses in a logical OR formula"
+
+echo
+echo " --- gawk '/cat|dog/{print \$0}' ---"
+gawk '/cat|dog/{print $0}' data_ere
+
+echo " --- gawk '/[ch]at|dog/{print \$0}' ---"
+gawk '/[ch]at|dog/{print $0}' data_ere

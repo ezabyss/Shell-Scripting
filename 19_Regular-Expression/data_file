@@ -1,0 +1,44 @@
+
+# for testing Special Character
+The cost is $4.00
+\ is a special character we need to escape it as well, producing a double backslash
+3 / 2	forward slash is not special character but we need to escape it to search it as well
+
+The book store
+Books are great 
+
+# for testing ^ character
+this is testline
+this is another testline
+this ^ is a test
+
+# for testing $ character
+whiteboard is fine we need marker
+we need alot of markers
+
+# for combining $ & ^ character
+hello test line bye
+hello test line
+
+# for Testing . character
+The cat is sleeping
+he is very fat
+he will come at 4
+at 5 am we will go home
+my hat is awesome
+
+# for testing character classes
+my hat is awesome
+yes sir
+Yes There
+i have 5 pen
+my friend has 2 pen
+46201
+223001
+4353
+22203
+453
+769
+i need to have some maintenence done on my car.
+I'll pay that in a seperate invoice.
+After I pay for the maintenance my car will be as good as new

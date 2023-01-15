@@ -1,0 +1,19 @@
+#!/bin/bash
+echo " ---------------------------------- NOTES ---------------------- "
+echo " By default, tha gawk program doesn't recognize regular expression intervals. (use --re-interval comand) " 
+
+
+echo " --- content of file ---"
+cat data_ere
+echo " --- "
+echo
+echo "--- gawk --re-interval '/be{1}t/{print \$0}' data_ere ---"
+gawk --re-interval '/be{1}t/{print $0}' data_ere 
+echo
+
+echo "--- gawk --re-interval '/be{1,2}t/{print \$0}' data_ere ---"
+gawk --re-interval '/be{1,2}t/{print $0}' data_ere
+echo
+
+echo "--- gawk --re--interval '/b[ae]{1,2}t/{print $0}' --- "
+gawk --re-interval '/b[ae]{1,2}t/{print $0}' data_ere

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Caret Character (^) : Starting At the begining
+
+echo " --- Searching for line starting with word: book --- "
+sed -n '/^book/p' data_file
+echo
+
+echo " --- Searching for line starting with word: Book ---"
+sed -n '/^Book/p' data_file
+echo
+
+echo " --- Searching for this --- "
+sed -n '/^this/p' data_file
+echo
+
+echo " --- Using ^ other than the beginning of pattern, it acts like normal character --- "
+sed -n '/s ^/p' data_file
+

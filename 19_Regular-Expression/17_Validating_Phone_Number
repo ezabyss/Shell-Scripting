@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# script to filter out bad phone numbers
+
+gawk --re-interval '/^\(?[2-9][0-9]{2}\)?(| |-|\.)[0-9]{3}( |-|\.)[0-9]{4}$/{print $0}' contactlist
+
+
+# EXPLANATION
+
+# In united states there are several commmon ways to display a phone number 
+# (123)-456-7890
+# (123)  456-7890
+# 123-456-7890
+# 123.456.7890
+# This leaves four possibilities for how customers can enter their phone number in a form
+
+# pattern 1 : ^\(?
+# There may or maynot be a left parenthesis in the phone number. 
+# ^ is used to indicate the beginning of the data. Because left parenthesis is a special character, you must escape it to use it as a normal character. 
+# ? indicates  that the left parenthesis may or may not appear in the data to match
+
+# pattern 2 : [2-9][0-9]{2}
+# Three digit area code.In the united states, area codes start with the number 2 (no area codes start with the digit 0 or 1), and can go to 9.
+ 
+# pattern 3 : \)?
+# after area codethe ending right parenthesis may or may not be there
+
+# pattern 4 : (| |-|\.)
+# The very first pipe symbol appears immediately after theleft parenthesis to match the no space condition.
+# you must use the escape character for the dot, otherwise it will be interpreted to match any character
+
+# pattern 5 : [0-9]{3}
+# three digit phone exchange number
+
+# pattern 6 : ( |-|\.)
+# after the phone exchange number, you must match a space, a dash, or a dot (this time you don't have to worry about matching no space because there must be at least a space between the phone exchange number and the rest of the number)
+
+# pattern 7 : ([0-9]{4}$
+# match the four-digit local phone extension at the end of the string

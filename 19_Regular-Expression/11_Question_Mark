@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "content of the file:  data_ere "
+cat data_ere
+echo "----------------"
+
+echo " Note: (?) doesn't match repeating occurences of the character "
+
+echo " --- be?t --- "
+gawk '/be?t/{print $0}' data_ere
+echo
+
+echo " zero or one character from the character class appears, the pattern match passes."
+echo " if both character appears or any character repeats, the pattern match fails."
+echo " --- b[ae]?t --- "
+gawk '/b[ae]?t/{print $0}' data_ere
+
+
+
+

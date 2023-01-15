@@ -1,0 +1,12 @@
+#!/bin/bash
+# regular expression
+
+echo " -- gawk '/Sat(urday)?/{print \$0}' ---"
+gawk '/Sat(urday)?/{print $0}' data_ere
+echo
+
+echo " --- gawk '/(c|b)a(b|t)/{print \$0} --- "
+gawk '/(c|b)a(b|t)/{print $0}' data_ere
+
+# (c|b)a(b|t) matches any combination of the letters in the first group  along with any combination of the letters in the second group
+

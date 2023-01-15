@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# [0-9] is equivalent to [123456789]
+
+echo " -- Using Ranges [0-9] --- "
+sed -n "/^[0-9][0-9][0-9]$/p" data_file
+echo
+
+echo " -- [c-h] matches words where the first letter is between the letter c and the letter h. ---"
+sed -n "/[c-h]at/p" data_file
+echo
+
+echo " --- multiple, noncontinuous ranges in a single characer class : [a-ch-m]at --- "
+sed -n '/[a-ch-m]at/p' data_file
+#[a-ch-m]at : allows the ranges, a through c, and h through m to appear before at text.

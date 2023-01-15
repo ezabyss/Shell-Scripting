@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Looking for the Ending : It needs the exach match 
+
+echo "--- Searching for the line that ends with word: marker ---"
+sed -n '/marker$/p' data_file
+echo
+
+echo "--- Ending pattern needs to be exact match : markers ---"
+sed -n '/markers$/p' data_file
+
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo " --- Matching line with Digits : [[:digit:]] --- "
+sed -n "/[[:digit:]]/p" data_file
+echo
+
+echo " --- Matching line with punctuation --- "
+sed -n "/[[:punct:]]/p" data_file
+echo " ---- look at summary for more special character classes --- "
+
+
+
+

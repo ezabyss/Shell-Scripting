@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# asterisk after a character signifies that the character must appear zero or more times in the text to match the pattern
+
+echo " >>> * : either exist 0 or more than that --- "
+
+echo " --- sed -n 'ie*k/p' ---"
+echo "ik" | sed -n 'ie*k/p'
+echo
+
+echo " --- sed -n '/ie*k/p' ---"
+echo "iek" | sed -n '/ie*k/p'
+echo
+
+echo " --- sed -n '/ie*k/p' ---"
+echo "ieeeek" | sed -n '/ie*k/p'
+echo
+
+echo " --- sed -n '/colou*r/p' ---"
+echo "I'm getting a color TV" | sed -n '/colou*r/p'
+echo
+
+echo " --- sed -n '/colou*r/p' --- "
+echo "I'm getting a colour TV" | sed -n '/colou*r/p'
+
+echo " --- sed -n '/potatoe*/p' --- " 
+echo " I ate potatoe with my lunch." | sed -n '/potatoe*/p'
+echo " I ate a potato with my lunch." | sed -n '/potatoe*/p'
+
+echo
+echo " --- .* : matches match any number of any character ---"
+echo "hello this is a regular pattern expression" | sed -n '/regular.*expression/p'
+
+echo
+echo " --- sed -n '/b[ae]t/p' --- "
+echo "bt" | sed -n '/b[ae]*t/p' 
+
+echo " --- sed -n '/b[ae]*t/p' --- "
+echo "baakeeet" | sed -n '/b[ae]*t/p'
+# as long as the a and e characters appear in any combination between the b and t characters(including not appearing at all), the pattern matches.

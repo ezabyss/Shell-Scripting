@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Special Characters: *[]^${}/+?|()
+# to use them in text we use: backslash character (\)
+
+
+echo " --- Search For Dollar $ Sign --- "
+sed -n '/\$/p' data_file
+echo
+
+echo " --- Search for the \ (backward slash)--- "
+sed -n '/\\/p' data_file
+echo
+ 
+echo " --- Search for  the / (forward slash) --- "
+sed -n '/\//p' data_file

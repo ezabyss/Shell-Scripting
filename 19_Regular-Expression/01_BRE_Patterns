@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo 		#just to give new line
+echo "	### Regular Expressions are Case sensitive ###"
+
+echo "--- echo \"This is a test\" | sed -n '/this/p' --- #This will give no output"
+echo "This is a test" | sed -n '/this/p'
+
+echo
+echo " ### book will match the books but, books will not match book ### "
+echo " -- echo \"The books are expensive\" | sed -n '/book/p' ---"
+echo "The books are expensive" | sed -n '/book/p'
+
+echo
+echo " 	### Spaces are also treated as any other character ### "
+echo " echo \"This is line number1\" | sed -n '/ber 1/p' # don't show anything cause there is space in between"
+echo "This is line number1" | sed -n '/ber 1/p'
+echo
+

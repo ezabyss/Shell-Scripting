@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo " -- Content of file : data_ere --- "
+cat data_ere
+echo " --- "
+echo " --- Plus Sign : Preceding character can appear one or more times, but must be present at least once"
+echo
+echo " --- be+t --- "
+gawk '/be+t/{print $0}' data_ere
+echo
+echo " --- b[ae]+t ---"
+gawk '/b[ae]+t/{print $0}' data_ere

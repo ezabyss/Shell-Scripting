@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "-- checking the line starting with hello and ending with bye ---"
+sed -n '/^hello test line bye$/p' data_file
+echo
+
+echo "--- filtering blank lines: sed '/^$/d' data_file ---"
+sed '/^$/d' data_file	# using /d to delete the blank lines

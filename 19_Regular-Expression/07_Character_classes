@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# character class in regular expressions limit what characters to match
+echo " --- Match any one character from [fhr] then at after it ---"
+sed -n '/[fhr]at/p' data_file
+echo		#empty echo are just to give the new line
+
+echo " --- Match yes or Yes : [Yy]es --- "
+sed -n '/[Yy]es/p' data_file
+echo
+
+echo " --- match lines that contains any one: [1578] ---"
+sed -n "/[1578]/p" data_file
+
+echo " --- Combined Character classes: (it may show more than the match character ---"
+sed -n "/[12345][0123456789][0123456789][0123456789][0123456789]/p" data_file
+echo
+
+echo " --- limiting to exactly match three digits using ^ & $ ---"
+sed -n "/^[0123456789][0123456789][0123456789]$/p" data_file
+echo 
+
+echo " --- Maching multiple character classes ---"
+sed -n "/maint[ea]n[ea]nce/p
+/sep[ea]r[ea]te/p
+" data_file
+
+echo 
+echo "--- NEGATING Character Classes: [^chf]at ---"
+sed -n '/[^ch]at/p' data_file

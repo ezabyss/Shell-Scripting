@@ -1,0 +1,53 @@
+If you manipulate data files in shell scripts, you'll need to become familiar with regular expressions.
+Regular expressions are implemented in Linux utilities, programming languages, and applications using regular expression engines.
+A host of different regular expression engines are available in Linux world.
+The two most popular are POSIX Basic Regular Expression (BRE) engine and the POSIX Extended Regular Expression (ERE) engine.
+The sed editor conforms mainly to the BRE engine, while the gawk program utilizes most features found in the ERE engine.
+
+A regular expression defines a pattern template that's used to filter text in a data stream.
+The pattern consists of a combination of standard text characters and special characters.
+The special characters are used by the regular expression engine to match a series of one or more characters, similarly to how wildcard characters work in other applications.
+
+By combining characters and special characters, you can define a pattern to match most any type of data. 
+You can then use the sed editor or gawk program to filter specific data from a larger data stream, or for validating data received from data entry applications.
+
+
+>> Anchor Character
+Caret Character (^) : Starting at the Begining
+Dollar Sign ($) : Looking at the ending
+
+
+# BRE Special Character Classes
+   class	Match
+[[:alpha:]] : alphabetical character, either upper or lower case.
+[[:upper:]] : uppercase alphabetical character A-Z
+[[:lower:]] : lowercase alphabetical character a-z
+[[:alnum:]] : alphanumeric character 0-9,A-Z, or a-z
+[[:blank:]] : a space or Tab character
+[[:digit:]] : numerical digit from 0-9
+[[:print:]] : printable character
+[[:punct:]] : punctuation character
+[[:space:]] : whitespace scharacter, space, Tab, NL, FF, VT, CR
+
+
+# Extended Regular Expressions
+gawk program recognizes the ERE patterns, but the sed editor doesn't
+
+it is important to remember that there is difference between the regular expression engines in the sed editor and the gawk program 
+gawk program can use most of the extended regular expression pattern symbols, and 
+it can provide some additional filtering capabilities than the sed editor doesn't have.
+however because of theis it is often slower in processing data streams.
+
+The Question Mark(?): the preceding character can appear zero or one time
+The Plus sign (+): the preceding character can appear one or more times, but must be present at least once
+
+Using braces
+Curly braces are available in ERE to allow you to specify a limit on a repeatable regular expression.
+m the regular expression appears exactly m times
+m,n the regular expression at least m times but no more than n times
+
+# Grouping Expressions
+Regular expresion patterns can also be groupted by using parentheses. 
+When you group a regular expression pattern, the group is treated likie a standard character. 
+You can apply a special character to the group just as you would to a regular character.
+

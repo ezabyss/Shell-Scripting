@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Dot character(.) : looks for any single character(includes space) but except a new line character
+# if there is no character in the place of the dot, the patern will fail
+
+
+echo " --- Searching : .at ---"
+sed -n "/.at/p" data_file

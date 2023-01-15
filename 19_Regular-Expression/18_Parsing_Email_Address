@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# username can use any alphanumeric character, along with several spcial characters (dot(.) dash(-), plus(+), underscore(_))
+# basic form of email : username@hostname
+
+gawk '/^([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/{print $0}' contactlist
+
+#DESCRIPTION
+# PATTERN 1: ^([a-zA-Z0-9_\-\.\+]+)@
+# this grouping specifies the allowable characters in the username, and 
+# the plus sign to indicate that there must be at least  one character present. 
+# The next character is obviously going to be the name @
+
+# PATTERN 2: ([a-zA-Z0-9_\-\.]+)
+# there are special rules for the top-level domain. 
+# Top-level domains are only alphabetic characters, and they must be no fewer than two characters (used in country codes) 
+# and no more than five characters in length. 
+
+

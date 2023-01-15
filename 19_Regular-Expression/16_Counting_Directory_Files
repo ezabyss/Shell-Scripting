@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# count number of files in your PATH
+# PATH variable is seperated by a colon 
+mypath=`echo $PATH | sed 's/:/ /g'` #replacing : with space 
+count=0
+for directory in $mypath
+do
+  check=`ls $directory`
+  for item in $check
+  do
+    count=$[ $count +1 ]
+  done
+  echo "$directory - $count"
+  count=0
+done
+
+
