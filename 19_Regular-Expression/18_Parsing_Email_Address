@@ -15,7 +15,7 @@ gawk '/^([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/{print $0}' 
 
 # PATTERN 2: ([a-zA-Z0-9_\-\.]+)
 # hostname pattern uses the same technique to match the server name and the subdomain names
-
+# this pattern matches the text : server, server.subdomain, server.subdomain.subdomain.
 
 # PATTERN 3: \.([a-zA-Z]{2,5})$
 # there are special rules for the top-level domain. 
