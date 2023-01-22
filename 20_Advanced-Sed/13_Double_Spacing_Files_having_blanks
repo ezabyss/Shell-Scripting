@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "--- Dealing the files having blank lines ---"
+sed '$!G' data_file
+
+# first delete any blank lines from the data stream and
+# then use the G command to insert new blank lines after all of the lines.
+
+echo
+echo " --------- "
+echo " -- sed '/^$/d;$!G' data_file --"
+sed '/^$/d;$!G' data_file
+

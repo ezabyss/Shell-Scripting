@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# exclamation mark(!) is used to negate a command
+
+echo " --- sed -n '/first/!p' data_file (prints line that doesn't contain word: first ---"
+sed -n '/first/!p' data_file
+
+echo
+### issues: In next commands section, a situation where a sed eidtor command wouldn't operate on the last line of text in the data stream because there wasn't a line after it.
+
+echo " --- sed '$!N; s/System.Administrator/Desktop User/' data_file2 "
+sed '$!N; s/System.Administrator/Desktop User/' data_file2
+
+# Dollar sign represents the last line of text in the data stream, so when te sed editor reaches the last lne, it doesn't executed the N command.
+# for all other line however, it does execute the command
+echo
+echo " --- Line Reversing Scripts --- "
+sed -n '{
+1!G
+h
+$p
+}' data_file
+
+#1$G : appends the hold space to the last line of text processed
+# h : place the new pattern space

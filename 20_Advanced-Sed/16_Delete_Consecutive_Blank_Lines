@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# The key to removing consecutive blank lines is to create an address range that includes a non blank line and a blank line.
+# If the sed editor comes across this range.
+# it shouldn't delete the line
+# However, for lines that don't match that range (two or more blank lines in a row). it should delete the lines.
+
+echo "-- Deleting Consecutive blank lines --"
+sed '/./,/^$/!d' data_file3
+
+# the range is /./ to /^$/ : The start address is the range matches any line that contains at least one character.
+# The end address in the range matches a blank line. Lines within this range aren't deleted.
+
+# No matter how many blank lines appear between lines of data in the file. the output places only one blank line between the lnes.
+

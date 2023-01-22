@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo " --- sed 'G' data_file ---"
+sed 'G' data_file2
+
+# The key to this trick is the default value of the hold space.
+# Remember that the G command simply appends the contents of the holdspace to the current pattern space contents.
+# When you start the sed editor, the hold space contins an empty line. 
+# by appending that to an existing line, you create a blank line after the existing line.
+# it also adds a blank line ot the last line in the data stream
+
+
+echo
+echo " --- To not add the blank line to the last line of the data stream ---"
+echo " --- sed '\$!G' data_file ---"
+sed '$!G' data_file2
+
+# As long as the line isn't the last line, The G command appends the contents of the hold space.
+# When the sed editor gets to the last line, it skips the G command
+

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# EXECUTE:
+# ./11_Redirecting_sed_output number
+# eg: ./11_Redirecting_sed_output 20
+
+# By default, sed editor outputs the results of the script to STDOUT.
+# you can use the backticks to redirect the output of your sed editor command to a variable for use later on in the script.
+# add commas to numbers in factorial answer
+
+# factorial Program
+factorial=1
+counter=1
+number=$1
+
+while [ $counter -le $number ]
+do
+  factorial=$[ $factorial * $counter ]
+  counter=$[ $counter + 1 ]
+done
+
+result=`echo $factorial | sed '{
+:start
+s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/
+t start
+}'`
+
+echo "The result is $result"
+
+# the result of that script is uses as the input to the sed editor script, which adds commas, This value is then used in the echo statement to produce the result

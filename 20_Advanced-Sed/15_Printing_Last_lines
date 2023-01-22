@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo " -- print last line of the file --- "
+sed -n '$p' data_file3
+
+echo
+echo " --- "
+echo " ---- Print set of lines --- "
+sed '{
+:start
+$q
+N
+11,$D
+b start
+}' /etc/passwd
+
+
+# The script first checks if the line is the last line in the data stream.
+# if it is, the quit command stops the loop
+# The N command appends the next line to the current line in the pattern space
+# The 11,$D command deletes the first line in the pattern space if the current line is after line 10.
+# This creates the sliding window effect in the patter space.
+
+
+
+###how can you se the dollar sign symbol to display a set number of lines at the end of data stream? 
+# A rolling window is a common way to examine blocks of text lines in the pattern space by combining them usiong the N command.
+# The N command appends the next line of text to the text already in the pattern space.
+# Once you have a block of 10 text lines in the pattern space,
+# you can check if you're at the end of the data stream using the dollar sign
+# If you're not at the end, continue adding more lines to the pattern space, while removing the original lines
+# remember the D command, which deletes the first line in the pattern space)
+# by looping through the N and D commands, you add new lines to the block of lines in the pattern space while removing old lines.
+# The branch command is the perfect fit for the loop.
+# to end the loop, just identify the last line and use the q command to quit.
+
+

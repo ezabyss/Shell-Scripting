@@ -1,0 +1,10 @@
+<html>
+<head>
+<title>This is title name</title>
+</head>
+<body>
+<p>
+This is the <b>first</b> line in the webpage. This should provide some <i>useful</i> information
+for us to use in our shell script.
+</body>
+</html>

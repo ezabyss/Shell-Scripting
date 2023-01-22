@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# test command(t) is also used to modify the flow of the sed editor script.
+# Instead of jumping to a label based on an address, the test command jumps to a label based on the outcome of a substitution command.
+# if you don't specify the label, sed branches to the end of the script if the test succeeds.
+
+# [address]t [label]
+# its like cheap if-then
+
+echo " ---  Using Test Command  --- "
+sed '{
+s/first/matched/
+t
+s/This is the/No match on/
+}' data_file
+
+# The first substittion command looks for the pattern text first.
+# If it matches the pattern in the line,
+# it replaces the text, and the test command jumps over the susequent substitution command.
+# If the first substitution command doesn't match the pattern, the second substitution command is processed.
+
+echo
+echo " --- Using the test commmand, we can clean the loop made using branch ---"
+echo " This, is, a, test, to, remove, commas. " | sed -n '{
+:start
+s/,//1p
+t start
+}'
+
+

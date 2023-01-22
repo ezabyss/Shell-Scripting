@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "--- Use ./10_Using_wrappers_revers filename ---"
+
+# trying to implement a sed editor script can be cumbersome, especially if the script is long.
+# Instead of having to retype the entire script each time you  can place the sed editor command in a shell script wrapper.
+# The wrapper acts as a go-between for the sed editor script and the command line
+#
+# you can use normal shell variables and parameters with your sed editor scripts.
+
+# shell wrapper for sed editor scripts to reverse lines
+
+sed -n '{
+1!G
+h
+$p
+}' $1
+
+# it reverse text lines in a data stream.
+# $1 shell parameter to retrieve the first parameter from the command lnie, which should be the name of the file to reverse
+
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sed '
+s/<[^>]*>//g
+/^$/d' html_file
+
+
+# sed editor ignore any embedded greater-than signs between the original tags.
+# create a character class that negates the greater than sign.

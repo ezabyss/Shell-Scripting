@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This feature can be especially helpful when you need to insert text between two or more substring components.
+# script that uses substring components to insert a comma in long numbers:
+echo
+echo " --- Inserting comma in 123456789 ---"
+echo "1234567" | sed '{
+:start
+s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/
+t start
+}'
+
+#  The script divides the matcing pattern into two components
+# .*[0-9]
+# [0-9]{3}
+
+# This pattern looks for two substring.
+# The first substring is any number of characters, ending in a digit. (it stops when it finds (,) comma)
+# The second substring is a series of three digits.
+# If this pattern is found in the text, the replacement text puts a commaa between the two components.
+# each identified by its component position.
+# The test command iterate through the number until all commas have been placed

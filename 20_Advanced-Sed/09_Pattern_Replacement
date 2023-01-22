@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo " ---- Replace Double quotation marks around a word ----- "
+echo " The cat sleeps in his hat " | sed 's/cat/"cat"/'
+echo
+
+echo " --- Using Wildcard character(.) in the pattern to match more than one word. Directly doesn't work ---"
+echo " The cat sleeps in his hat " | sed 's/.at/".at"/g'
+echo
+
+echo " --- Using Ampersand(&) to match more pattern --- "
+echo " The cat sleeps in his hat " | sed 's/.at/"&"/g'
+echo
+
+echo " --- Replacing Individual Words --- "
+# & retrieves entire string that matches the pattern
+# we can retrieve a subset of string.
+# The sed editor uses parentheses to define a substring component within the substitution pattern.
+# You can then reference each substring component using a special character in the replacement pattern.
+# The replacement character consist of a backslash and a number.
+# The number indicates the position of the substring. eg \1,\2 and so on
+
+####
+# **** CAUTION ****
+# When you use parentheses in the substitution command, you must use the escape character to identify them
+# as grouping not normal parentheses.
+# This is the reverse of when you escape other special characters.
+echo "The System Administrator manual" | sed '
+s/\(System\) Administrator/\1 User/'
+
+# a set of parentheses around the word "System" identifying it as a substring component
+# \1 : to recall the first identified component
+echo
+echo " --- "
+echo "That furry cat is pretty" | sed 's/furry \(.at\)/\1/'
+
+echo " ---"
+echo "That furry cat is preety" | sed 's/furry \(.at\)/\1/'
+# substring component: allows to select just which part of the pattern to use as the replacement pattern.
+

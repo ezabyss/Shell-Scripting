@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# when data files contian multiple blank lines at the start of the file.
+# Often when trying to import data from a text file into a database, the blank lines create null entries throwing off any calcualtions using the data.
+
+# /./,$!d
+# the script uses an address range to determine what lines are deleted.
+# the range starts with a line that ocntains a character and continues to the end of the data stream.
+# any line within this range is not delted from the output.
+# this means that any lines before the first line that contain character are deleted.
+
+echo ' --- deleting leading blank spaces --- '
+sed '/./,$!d' data_file3
+
+# the script uses an address range to determine what lines are delted.
+# the range starts with a line that contains a character and continues to the end of the data stream.
+# Any lines within the range is not deleted from the output.
+# This means that any lines before the first line that contiain a character are deleted.
+

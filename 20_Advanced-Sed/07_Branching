@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# it proides a way to negate an entire section of commands, based on an address, an address pattern, or an address range.
+# This allows you to perform a group of commands only on a specific subset within the data stream.
+# format:: [address]b [label]
+# The address parameter determines which line or lines of data trigger the branch command.
+# label parameter dfines the location to branch to.
+# label parameter is not present, the branch command proceeds to the end of the script.
+
+echo "--- Skips the substitution command for the 3rd & 4th lines in the data stream ---"
+# skips the line that exist in 3rd & 4th line.
+echo
+sed '{
+3,4b
+s/This is/Is this/
+s/line./test?/
+}' data_file
+
+echo
+echo " --- Using label allows to skip command that match the branch address but still process other commands in the script ----"
+# skips the line that contains 'first'
+sed '{
+/first/b jump1
+s/This is the/No jump on/
+:jump1
+s/This is the/Jump here on/
+}' data_file
+
+echo
+echo " --- Branching creating a looping effect --- "
+echo " --- Each iteration removes the first comma --- "
+
+echo "This, is, a, test, to, remove, commas. " | sed -n '{
+:start
+s/,//1p
+/,/b start
+}'
+
+# /,/b start :  looks for comma(,) then jumps to branch 'start'
+# it helps to stop from the loop

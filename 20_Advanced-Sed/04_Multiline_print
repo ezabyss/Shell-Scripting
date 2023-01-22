@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# The multiline print command (P) follows along using the same technique.
+# It prints only the first line in a multiline pattern space.
+# This includes all characters up to the newline character in the pattern space.
+
+echo " --- When multiline match occurs, \P only prints first line --- "
+sed -n 'N ; /System\nAdministrator/P' data_file2
+
+

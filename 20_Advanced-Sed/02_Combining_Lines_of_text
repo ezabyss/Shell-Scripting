@@ -1,0 +1,26 @@
+#!/bin/bash
+echo " ---- combines the two lines ---- "
+sed '/first/{ N ; s/\n/ / }' data_file
+
+# the sed editor script searches for the line of text that contains the word "first" in it.
+# When it finds the line, it uses the N command to combine the next line with that line.
+# it uses substitution command (s) to replace the newline character with a space.
+# the result is that the two lines in the text file appear as one line in the sed editor.
+echo
+echo ' --- Uses the N command to look for splited occurences --- '
+# The N command helps solve this problem.
+sed 'N ; s/System.Administrator/Desktop User/' data_file2
+# by using N command to combine the next line with the line where the first word is found, you can detect when a line split occurs in the phrase
+# the substitution command uses a wildcard patter(.) between 'System' and 'Administration' to match both the space and the newline situation.
+# However, When it matches the newline character, it removed it from the string, causing the two lines to merge into one line. This may ot be exactly what you want
+# Because the System Administrator text appears in the last line in the data stream, the N command missses it, as there isn't another line to read in to the pattern space to combine.
+
+echo
+echo "--- Using multiple occurences ---"
+sed '
+s/System Administrator/Desktop User/
+N
+s/System\nAdministrator/Desktop\nUser/
+' data_file2
+# it first checks for the single line occurences and then it checks if the occurences is splited 
+

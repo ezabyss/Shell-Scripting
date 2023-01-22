@@ -1,0 +1,27 @@
+#!/bin/bash
+echo
+echo "--- Content of data_file2 ---"
+cat data_file2
+echo " ------- "
+echo
+echo "--- Single line delete (d) : delete the current line in the pattern space. --- "
+sed 'N ; /System\nAdministrator/d' data_file2
+echo
+
+echo "--- Multiline Delete command (D): only deletes first line in the pattern space --- "
+sed 'N ; /System\nAdministrator/D' data_file2
+# The second line of text, added to the pattern space by the N command, remains intact.
+# remove a line of text that appears before a line that you find a data string in.
+echo
+echo "--- Removing a blank line that appears before the first line in datastream ---"
+sed '/^$/{N ; /first/D}' data_file2
+
+# looks for blank lines and then uses the N command to add the next line of text into the pattern space.
+# If the new pattern space contents contain the word 'first', the D command removes the first line in the pattern space
+# Without the combination of the N and D commands, it would be impossible to remove the first blank line without removing all other blank lines.
+
+
+# D command has a unique feature in that it forces the sed editor to return to the beginning of the script and repeat the commands on hte same pattern space (it doesn't read a new line of text from the data stream.
+# By including the N command in the command script, you can effectively single-step through the pattern space, matching multiple lines together
+# Next, by using the P command, you can print the irst line, and then using the D command, you can delete the first line and loop back to the beginning of the script.
+# Once you are back at the scripts beginning, the N command reads in the next line of text and starts the process all over again. This loops until you reach the end of the data stream

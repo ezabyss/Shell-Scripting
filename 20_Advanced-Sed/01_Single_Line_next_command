@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo " --- sed '/^$/d' data_file --- removes empty line "
+sed '/^$/d' data_file
+# this removes all empty lines
+
+echo
+# this removes only the lines after the line that contains word: header
+echo " --- sed '/header/{n ; d}' data_file --- "
+sed '/header/{n ; d}' data_file
+
+# This scripts looks for unique line, which contains the word header.
+# once the script identifies that line, the n command moves the sed editor to the next line of the text, which is the empty line
+# At that point, the sed editor continues processing the command list, which uses the d command to delete the empty line.
+# When the sed editor reaches the end of the command script, it reads the next line of text from the data stream and starts processing commands from the top of the command script
+# The sed editor doesnot find another line with the word header, thus, no further lines are deleted.
+

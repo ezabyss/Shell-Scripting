@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo " --- sed '=' data_file2 ---"
+sed '=' data_file2
+
+# it looks little awkward as the number is one line above the actual line
+echo
+
+echo "--- using N command to show the lines in same line (replace new line with space---"
+sed '=' data_file2 | sed 'N; s/\n/ /'
+# it replaces the newline with a space
+

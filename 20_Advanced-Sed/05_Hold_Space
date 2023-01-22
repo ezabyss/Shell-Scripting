@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# The pattern space is an active buffer area that holds the text examined by the sed editor while it processes commands
+# However, it isn't the only space available in the sed editor for storing text.
+
+# The sed editor utilizes another buffer area called the hold space.
+# You can use the hold space to temporarily hold lines of text while working on other lines in the pattern space.
+
+sed -n '/first/ {
+h
+p
+n
+p
+g
+p
+}' data_file
+
+# DESCRIPTION
+# sed -n '/first/ : filter the line containing the word first
+# h : when the line containing the word first appears, h command places the line in the hold space.
+# p : prints the contents of the pattern space, shich is still the first data line.
+# n : retrieves the next line in the data_stream.and place it in the pattern space
+# p : prints the contents of pattern space. (which is second line)
+# g : places the contents of the hold space (This is the first line) into the pattern space, replacing current text
+# p : prints the current contents of the pattern space, which is now back to the first data line.
+
+echo
+echo " --- Print in Reverse order ---"
+sed -n '/first/{
+h
+n
+p
+g
+p
+}' data_file 
