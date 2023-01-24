@@ -1,0 +1,38 @@
+# By default, the mysql client program attempts to log in to the MySQL server using your Linux login name.
+# If this name isn't configured in MySQL as a user account, you'll need to use the -u parameter to specify the name to log in as:
+# -p parameter tells the mysql program to prompt for a password to use with the user account to log in.
+# Once you're logged into the server, you can start entering command.
+mysql -u root -p
+
+\s
+
+# mysql command: two diff. types: 1) special mysql command 	2)  standard SQL statements
+# there are lots of mysql command : check online
+
+# \? or \h :  help
+# \c :  clear command.
+
+# ;(semicolon indicates the end of a command to the mysql program)
+# display the databases currenly configured on MySQL server.
+SHOW DATABASES;
+
+# mysql session can be connected to only one database at a time.
+# connect to a single database.
+USE mysql;
+
+SHOW TABLES;
+
+# NOTE: UPPERCASE letters for SQL commands. is a common way to write SQL command. but mysql also allows you to use lowercase
+
+
+######## EXAMPLE ######
+# CREATE DATABASE name;
+CREATE DATABASE test;
+# check if DB is created.
+SHOW DATABASES; 
+# connect to new database
+USE test;
+# Look for tables
+SHOW tables
+# Empty set means  no tables to work with yet.
+

@@ -1,0 +1,39 @@
+follow the instruction given at below resource: 
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+
+>>sudo apt update
+
+1. Install MySQL by running the command `sudo apt-get install mysql-server`.
+
+2. During the installation, you will be prompted to set a root password for the MySQL server. 
+   Make sure to choose a strong password.
+
+3. Once the installation is complete, start the MySQL service by running the command 
+   >> sudo service mysql start
+
+4. To secure the installation of MySQL, run the command `sudo mysql_secure_installation`. 
+   This command will guide you through a series of prompts to set up a secure MySQL environment.
+
+5. To log in to the MySQL shell, run the command `mysql -u root -p` and 
+   enter the root password when prompted.
+
+6. Once you are logged in to the MySQL shell, you can start creating databases, tables, and users by running SQL commands.
+
+7. To test your setup, you can try to connect to the MySQL server from another terminal window by running the command 
+   >> mysql -u root -p	and enter the root password when prompted.
+
+# ERROR 1
+ERROR1: If the socket file is missing, you can try creating a symbolic link to the correct path by running the command 
+------ Solution ------
+sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock.
+
+
+# ERROR 2
+SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the MySQL server. 
+Please consider using ALTER USER instead if you want to change authentication parameters.
+----- Solution ------
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+########
+

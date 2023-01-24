@@ -1,0 +1,28 @@
+
+# FOLLOW THE RESOUCES AT:
+https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+
+# 'root' : has total control over all of the MySQL server objects 
+# (much like: root Linux account has complete control over the linux system).
+# it extremely dangerous to use the root mysql account for normal application.
+
+
+###  CREATE USER ###
+# CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+CREATE USER  'test'@'localhost' IDENTIFIED WITH authentication_plugin BY 'password';
+
+# After CREATE USER, you specify a username. 
+# This is immediately followed by an @ sign and then the hostname from which this user will connect. 
+# If you only plan to access this user locally from your Ubuntu server, you can specify localhost. 
+# Wrapping both the username and host in single quotes isn’t always necessary, but doing so can help to prevent errors.
+>> GRANT SELECT,INSERT,DELETE,UPDATE ON test.* TO 'test'@'localhost';
+>> create user ‘test’@’localhost’ IDENTIFIED BY ‘password’;
+ 
+
+## TEST the new user account directly from the mysql program:
+>> mysql test -u test -p
+
+# This command connects to the MySQL server and attempts to connect to a database named "test" 
+# using the username "test" and prompts for a password. 
+# The -u flag specifies the username and the -p flag specifies that a password is required to connect.
+# Once the user enters the correct password, the mysql client will connect to the specified database and present a command prompt where SQL statements can be executed.

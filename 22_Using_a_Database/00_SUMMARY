@@ -1,0 +1,21 @@
+# INSTALL : MYSQL
+* you may require to update using :sudo apt update
+ sudo apt install mysql-server
+ sudo apt install mysql-client
+
+check the version using : mysql --version
+
+Ability to save, modify,a andn retrieve data from your shell scripts in databases.
+You can easily access both the MySQL and PostgreSQL database servers directly from your shell scripts
+
+After installing the MySQL and PostgreSQL servers, you can use their respective client programs to access the servers fro mthe command line, or from shell scripts.
+The mysql cliendt program provides the command line interface to the MySQL server,
+You can send SQL commands as well as customized MySQL commands to the server from your shell scripts and then retrieve the results.
+
+The psql client program operates the same way  for the PostgreSQL server.
+There are plenty of command line parameters you can use to help format your data in just the right way.
+
+Both client programs allow you to send either a single command to the server or use input redirection to send a  batch of commands.
+The programs normally send the output data from the server to STDOUT, 
+but you can redirect the output to a variable and use that information in you shell script.
+
