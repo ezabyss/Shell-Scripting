@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# var[index]=element
+gawk 'BEGIN{
+capital["Nepal"]="Kathmandu"
+capital["India"]="New Delhi"
+print "capital of Nepal :" capital["Nepal"]
+print "capital of India :" capital["India"]
+}'
+
+echo "-- Element can also be : Numeric variable -- "
+gawk 'BEGIN{
+val[1]=20
+val[2]=30
+print "value of val[1] : "val[1]
+print "value of val[2] : "val[2]
+print "Sum : " val[1]+val[2]
+}' 

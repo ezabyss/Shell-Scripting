@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo " --- Content of data_file5 ---"
+cat data_file5
+
+
+echo " --- "
+echo " While loop iterate over a set of data, checking a condition that stops the iteration "
+gawk '{
+total=0
+i=1
+while (i<4)
+{
+  total += $i
+  i++
+}
+avg=total/3
+print "Average: ", avg
+}' data_file5
+
+# This is useful if you have multiple data values in each record that you must use in calculation
+
+echo " --- using break in  while loop ---"
+gawk '{
+total=0
+i=1
+while (i<4)
+{
+  total+=$i
+  if (i==2)
+    break
+  i++
+}
+avg = total/2
+print "The average of the first two data elements is: ", avg
+}'  data_file5

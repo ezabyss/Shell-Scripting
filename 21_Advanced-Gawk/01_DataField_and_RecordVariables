@@ -1,0 +1,22 @@
+#1/bin/bash
+
+# FIELDWIDTHS : A space-separated list of number defining the exact width (in space)
+# FS  : Input field separator character
+# RS  : Input record separator character
+# OFS : Output field separator character (By default space)
+# ORS : Output record separator character
+
+# FS and OFS variables defines how gawk program handlese data fields in the data stream.
+# FS variable define what character separates data fields in a record.
+# OFS variable performs the same function but for the output by using the print command.
+
+echo "--- Content of files ---"
+cat data_file
+
+echo
+echo " --- By default OFS is space --- "
+gawk 'BEGIN{FS=","} {print $1,$2,$3}' data_file
+
+echo
+echo "--- Setting ORS (Output field separator) --- "
+gawk 'BEGIN{FS=",";OFS="-"} {print $1,$2,$3}'  data_file

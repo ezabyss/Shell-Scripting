@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# delete array[index]
+echo "-- Before Deleting ---"
+gawk 'BEGIN{
+var["a"]=1
+var["g"]=2
+for (x in var)
+{
+  print "Index: ", x," - Value:", var[x]
+}
+print " ---- "
+
+delete var["g"]
+print "-- After Deleting --"
+for (x in var)
+{
+  print "Index:",  x, " - Value:",var[x]
+}
+}'
+

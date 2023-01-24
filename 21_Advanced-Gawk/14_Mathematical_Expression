@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# you can also use mathematical expression in the matching pattern.
+echo "--- Display all of the system users who belong to the root users group(group number 0) "
+gawk -F: '$4 == 0{print $1}' /etc/passwd
+
+# Scripts check for records where the fourth data field contains the value 0.
+echo
+echo "--Check if the 1st field exactly match 'data' --"
+gawk -F: '$1 == "data"{print $1}' data_file
+
+echo
+echo " --- Check if the 1st field exactly match 'data11' ---"
+gawk -F: '$1 == "data11"{print $1}' data_file
+
+# The first test doesn't match any records as the first data field value isn't data in any of the records.
+# The second test matches one record with the value data 11

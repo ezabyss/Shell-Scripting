@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# mktime(datespec): converts a date specified  in the format YYYY MM DD HH MM SS [DST] into a timestamp value.
+# strftime(format[,timestamp])  :  formats either the current time of day timestamp, or timestamp if  provided into a formatted day and data, using the date() shell function format
+# systime(): Returns the timstamp for the current time of day.
+
+# mostly used while working with log file
+
+gawk 'BEGIN{
+data=systime()
+day=strftime("%A, %B %d, %Y", date)
+print day
+}'
+# systime func  : retrieve  the current eposh timestamp from the system
+# strftime func : to convert it into a human-readable format using the date shell command's date format character
+

@@ -1,0 +1,18 @@
+function myprint()
+{
+  printf "%-16s - %s\n", $1, $4
+}
+
+function myrand(limit)
+{
+  return int(limit * rand())
+}
+
+function printfourth()
+{
+  print $3
+}
+# this funclib contains3 function definitions. 
+# to use them,  you need to use the -f command line parameter.
+# We cannot combine the -f command line parameter with an inline gawk script, but we can use multiple -f parameters on the same command line
+

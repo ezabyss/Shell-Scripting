@@ -1,0 +1,28 @@
+#!/bin/bash
+
+gawk 'BEGIN{
+print(" toupper(\"hello there\"):", toupper("hello there"),"\n")
+
+var["a"]=1
+var["g"]=2
+var["m"]=3
+var["u"]=4
+
+asort(var,sorted_var)
+for (i in sorted_var)
+  print "Index: ", i, " - value: ", sorted_var[i]
+# the new array,sorted_array, contains the newly sorted data elements of the originl array but te index valuers are now chaned to numerical values, indicating the proper sort order
+
+}'
+
+echo "--- Using split function"
+gawk 'BEGIN{
+FS=","}
+{
+split($0, var)
+print var[1], var[5]
+
+}' data_file
+
+echo
+echo "-- Look online resources for more string related function ---"

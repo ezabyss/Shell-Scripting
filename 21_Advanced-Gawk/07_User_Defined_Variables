@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "-- Assigning  variable ---"
+gawk '
+BEGIN{
+testing="This is a test"
+print testing
+testing=45
+print testing
+}'
+
+echo "  ---   "
+echo " Assignments can also  includes mathematica algorithms to handle numeric values "
+gawk '
+BEGIN{
+x=4
+x=x*2+3
+print x}'
+
+echo " --- "
+echo " Assigning variables on the command line "
+

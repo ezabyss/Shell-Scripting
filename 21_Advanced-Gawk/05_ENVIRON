@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# ENVIRON uses and associative array to retrieve shell environment variables.
+# An associative array uses text for the array index values instead of numeric values
+
+gawk '
+BEGIN{
+print ENVIRON["HOME"]
+print ENVIRON["PATH"]
+}'
+
+# The ENVIRON["HOME"]: retrieves the HOME environment variable value from the shell
+# The ENVIRON["PATH"]: retrieves the PATH environment variable.

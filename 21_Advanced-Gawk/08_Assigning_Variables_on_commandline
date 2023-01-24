@@ -1,0 +1,27 @@
+#!/bin/bash
+echo " ----- content of file --- "
+cat data_file
+echo
+
+echo " --- DISPLAY SPECIFIC DATAFIELD in the file ---"
+echo
+echo "--- Display second DATAFIELD ---"
+echo "---  gawk -f script1 n=2 data_file ---"
+gawk -f script1 n=2 data_file
+echo
+
+echo "--- Display third DATAFIELD ---"
+echo "---  gawk -f script1 n=3 data_file ---"
+gawk -f script1 n=3 data_file 
+
+# There's one problem with using command line parameters to define variable values.
+echo
+echo "--  Problem: The value isn't available in the BEGIN section of the code when you set the variable "
+echo "--- gawk -f script2 n=3 data_file ---"
+gawk -f script2 n=3 data_file
+
+echo
+echo " -v CL Param: allows you to specify variables that are set before BEGIN section of code."
+# The -v command line parameter must be placed before the script code in the commandline
+echo " --- gawk -v n=3 -f script2 data_file ---"
+gawk -v n=3 -f script2 data_file

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# I have made function library: funlib and program file: script3
+
+gawk -f funclib -f script3 data_file3
+
+# to use your library, just create file that contains your gawk program,
+# and specify both the library file and your program file on the command line
+
+# unfortunatelly, you can't combine the -f command line parameter with the inline  gawk script
+# but you can use multiple -f parameters on the same command line

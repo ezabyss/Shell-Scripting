@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "-- Content of data_file --"
+cat data_file
+echo
+echo " ---  Search for string that contains 11 on file ---"
+gawk '
+BEGIN{FS=","}
+/11/{print $1}' data_file
+
+# The regular expression /11/ matches records that contain the string 11 anywhere in the data fields.
+echo "--- Search for string that contains 1 on data_file ---"
+gawk '
+BEGIN{FS=","}
+/,d/{print $1}' data_file
+
+# This example matches the comma used as the  field separator in the regular expression.
+

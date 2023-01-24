@@ -1,0 +1,35 @@
+#1/bin/bash
+
+gawk 'BEGIN{
+
+print("atan2(45,60): ", atan2(45,60)) # arctangent of x,y radians
+
+print("cos(45): ",cos(45)) # cosine of x radian
+
+print("exp(100): ",exp(100)) # expnential of x
+
+print("int(53.5): ",int(53.5)) # integer 
+
+print("log(10): ",log(10)) # natural logarithm
+
+print("int(10)*rand() :", int(10)*rand()) #random floating point
+
+print("sin(30): ",sin(30)) # sine of x
+
+print("sqrt(3600): ", sqrt(3600)) # squareroot
+
+print("srand(10):", srand(10)) # provide seed value for random number generation
+
+print("\n-- Bitwise Manipulating --\n")
+print("and(5,7): ", and(5,7)) # perform bitwise and of 5 and 7
+
+print("compl(5): ", compl(5))#  complement the value: 5
+
+print("lshift(5,2): ", lshift(5,2)) # shifts the value 5 count number 2 of bits left
+
+print("or(5,2): ", or(5,2)) #bitwise OR of values 5 and 2
+
+print("rshift(5,2): ",rshift(5,2)) #shift the value val  count number of bits right
+
+print("xor(5,2): " xor(5,2)) # bitwise XOR of value 5 and 2
+}'

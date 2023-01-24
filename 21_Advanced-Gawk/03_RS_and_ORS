@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# RS and ORS  variables define how your gawk program handles records in the  data stream
+# By default, gawk sets the RS and ORS variables to the newline character.
+# the default RS variable value indicates that each new line of text in the input data stream is a new record.
+
+
+
+# If you try to read using the default fS and RS variable values,
+# gawk will read each line as a separate record  and interpret each space in the record as a field separator.
+echo " --- Content of data_file3 ---"
+cat data_file3
+
+echo
+echo " --- The gawk program interpreted each line in the file as data field and the blank lines as record seperators ---"
+gawk 'BEGIN{FS="\n";RS=""} {print $1, $4}' data_file3
+
+# set the FS variable to newline character:
+# This indicates that each line in the data stream is a separate field and all of the data on a line belongs to the data field.
+# However, When you do that, you don't know where a new record starts.
+# set the RS variable to an empty string, and then leave a blank line between data records in the data stream
+# The gawk program will interpret each blank line as a record separator
+
+
+

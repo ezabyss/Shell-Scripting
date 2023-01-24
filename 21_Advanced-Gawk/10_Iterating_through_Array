@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# for (var in array) {}
+
+gawk 'BEGIN{
+var["a"]=1
+var["g"]=2
+var["c"]=3
+var["f"]=4
+for (x in var)
+{
+  print "Index:",x," - Value:", var[x]
+}
+}'
+
+# index values aren't returned in any particular order, but they each reference the appropriate data element value.
+

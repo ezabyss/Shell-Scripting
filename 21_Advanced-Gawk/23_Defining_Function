@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# USER-DEFINED FUNCTIONS
+
+# function name([variables]) { statements }
+
+gawk '
+function myprint()
+{
+   printf("%-16s - %s\n", $1, $4)
+}
+
+BEGIN{FS="\n";RS=""}
+{
+  myprint()
+}' data_file3
+
+# When you define a function, it must appear by itself before you define any programming section (including the BEGIN section). 
+# it helps keep the function code separate  from the rest of the gawk program.
+
+
+

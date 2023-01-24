@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Matching operator allows to restrict a regular expression to a specific data field in the records.
+# Matching operator symbol is tilde (~)
+
+# eg: $1 ~ /^data/
+# The $1 variable represents the first data field in the record.
+# This expression filters records where the first data field starts with the text 'data'
+
+echo "---compares the second data field with the regular expression /^data2/ which indicates the string starts with text data2---"
+gawk '
+BEGIN{FS=","}
+$2 ~ /^data2/{print $0}' data_file
+echo
+
+echo " --- Search for the first data field for the text 'daemon' "
+gawk -F: '$1 ~ /daemon/{print $1, $NF}' /etc/passwd
+echo
+
+echo " -- Negate the  regular expression match by using the ! symbol -- "
+gawk -F: '$1 !~ /daemon/{print $1, $NF}' /etc/passwd
+# prints the user id and shell for all of the entries in the /etc/passwd file that don't match the userid daemon
+
+# $1 !~ /expression
+# if the regular expression is not found in the record, the program script is applied to the record data

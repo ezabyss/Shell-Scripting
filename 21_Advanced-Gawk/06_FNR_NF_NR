@@ -1,0 +1,37 @@
+#!/bin/bash
+# FNR, NF and NR :  keep track of data fields and records in your gawk program
+# NF allows you to specify the last data field in the record without having to know its position
+
+gawk '
+BEGIN{
+FS=":"
+OFS=":"}
+{
+print $1,$NF}'  /etc/passwd
+
+# The NF variable contains the numerical value of the last data field in the data file.
+# You can then use it as a data field variable by placing a dollar sign  in the front of it.
+
+echo " --- "
+# The FNR and NR variables are slightly different
+# FNR: contains the number of records processed in the current data file
+# NR: variable contains the total number of records processed.
+
+echo "-- FNR contians the number of records processed in the curent data file---"
+gawk '
+BEGIN{
+FS=","}
+{print $1,"FNR="FNR}' data_file data_file
+
+echo
+echo " --- FNR is reset when gawk processed the second data file --- "
+echo " --- NR  variable maintained its count into the second data file ---"
+
+gawk '
+BEGIN {FS=","}
+{print $1,"FNR="FNR,"NR="NR}
+END{print "There were", NR,"records processed"}' data_file data_file
+
+# if you're using only one data file for input, the FNR and NR values  will be the same
+# if you're using multiple files for input, the FNR value will bereset for each data file, and the NRvalue will keep count throughout all the data files
+

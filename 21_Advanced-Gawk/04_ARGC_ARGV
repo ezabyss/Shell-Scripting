@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo " ARGC and ARGV : retrieve the number of command line parameters and their values from shell "
+gawk 'BEGIN{print ARGC,ARGV[1]}' data_file
+
+# unlike shell variables, when you reference a gawk variable in the script, you don't add a dollar sign before the variable name.

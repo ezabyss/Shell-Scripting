@@ -1,0 +1,14 @@
+#!/bin/bash
+
+gawk '{
+total=0
+i=1
+do
+{
+  total+=$i
+  i++
+} while (total < 150)
+print total }' data_file5
+
+# script reads the data fields from each record and total them until value reach 150.
+

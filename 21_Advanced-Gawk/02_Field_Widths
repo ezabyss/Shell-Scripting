@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# FIELDWIDTHS variable allows to read records without using a field separator character.
+# In some applicatins, instead  of using a field separator character, data is placed in specified columns within the record.
+# In these instances, you must set the FIELDWIDTHS variable to the match the layout of the data in the records.
+
+# Once you set the FIELDWIDTHS variable, gawk ignores the FS and calculates daa fields based on the provided field width sizes.
+
+echo "--- Content of file ---"
+cat data_file2
+echo
+
+echo " --- Using FIELD WIDTHS (3 5 2 5) --- "
+gawk 'BEGIN{FIELDWIDTHS="3 5 2 5"} {print $1,$2,$3,$4}' data_file2
+
+# The FIELDWIDTHS variables defines four data fields, and gawk parses the data record accordingly.
+# The string of numbers in each record is split based on the defined field width values.
+
+# CAUTION: those values must remain constant. This method can't accomodate variable-length data fields
+
