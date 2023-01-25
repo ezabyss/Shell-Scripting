@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# you may require to create a PostgreSQL account that matches our Linux system account.
+# This way you can run shell scripts that access the PostgreSQL  data-base directly from you Linux user account
+# CREATE ROLE 'name' login;
+
+# test connecting to the postgreSQL server
+PSQL=`which psql`
+$PSQL test
+
+
+# Because the scripts is being run from a Linux user account, and
+# a PostgreSQL account exists with the same name, all you need to specify on the psql command line is the name of the database to connect with.
+# The 08_Logging_into_the_server script connected to the test database and left you at the psql prompt inside that database
+
+## If you have created a special user account in MySQL for your shell scripts, you'll need to specify that on the mysql  command
+# $MYSQL test -u test -p
+
+# 

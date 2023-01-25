@@ -1,0 +1,5 @@
+
+# after establishing the connection to the server, you'll want to send commands to interact with your database.
+# 1) single command and exit  2) Send Multiple command
+
+# for mysql command, 

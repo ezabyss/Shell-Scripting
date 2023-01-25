@@ -1,0 +1,17 @@
+# INSERT INTO table VALUES (...)
+
+mysql test -u test -p
+INSERT INTO employees VALUES (1,'caste','name', 25000.00);
+
+# in psql
+psql test
+# INSERT AS Much value as you like
+INSERT INTO employees values (1, 'caste','name',25000);
+
+
+# delete 
+# DELETE FROM TABLE;	# removes all of the records in  table
+# DELETE FROM TABLE WHERE condition; 
+DELETE FROM employees Where empid=2;
+
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# test connecting to the MySQL  server
+MYSQL=`which mysql`
+# $MYSQL test -u test -p
+
+# It works but pause and ask for the user to insert password
+# you can insert  passwor in the command line.
+# $MYSQL test -u test -p password 	# but it isn't secure the as anyone with the script access will get the password
+
+
+# to solve this problem.
+# use special configuration file used by the mysql program. 
+# mysql program uses the $HOME/.my.cnf file to read special startup commands and settings.
+# ONe of those setting is the default password for mysql ssessions started by the user account.
+# to set the default password in the file. just create the following.
+
+# You can create .my.cnf file using: nano $HOME/.my.cnf
+# [client]
+# password  = test
+# cat .my.cnf
+
+
+# Now  you can  directly access the sql using
+$MYSQL test -u test

@@ -1,0 +1,29 @@
+
+# both MySQL and PostgreSQL servers are considered relational databases.
+# In relational database, data is organized by data fields, records and table
+# data field : single piece of information, records: collection of related data fields (one set of data), tables, 
+
+
+#### MYSQL
+# login as root, and use test database
+mysql test -u root -p 
+
+# its extremely important that you make sure you're in the right database before creating the new table,
+# also make sure that you're logged in using the administrative user account (root for MySQL and postgres forPostgreSQL) to create the tables.
+CREATE TABLE employee (
+    empid int not null,
+    lastname varchar(30),
+    firstname varchar(30),
+    salary float,
+    primary key (empid));
+
+SHOW tables;	# in mysql
+
+### IN PostgreSQL
+sudo -u postgres psql 
+\c test		# connects to database :test
+# creating tables is same in both mysql & postgresql
+
+\dt		# in psql shows tables
+
+

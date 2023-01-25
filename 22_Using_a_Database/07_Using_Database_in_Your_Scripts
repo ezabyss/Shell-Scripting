@@ -1,0 +1,14 @@
+
+# connecting to the databases
+# You'll need to some how utilize the mysql or psql programs in you shell script.
+# FINDING PROGRAM: where the mysql or psql program is in you shell script.
+
+# which command tells you where the shell would find a command if it attempted to run it from the command line.
+# which mysql
+# which psql
+
+# the easiest way to handle this information is to assign it to an environment variable and then use that in your shell script.
+MYSQL=`which mysql`
+PSQL=`which psql`
+# Now $MYSQL & $PSQL variable points to the executable for their program
+

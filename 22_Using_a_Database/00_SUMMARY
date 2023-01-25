@@ -19,3 +19,13 @@ Both client programs allow you to send either a single command to the server or 
 The programs normally send the output data from the server to STDOUT, 
 but you can redirect the output to a variable and use that information in you shell script.
 
+
+# MySQL server maintains its own internal databse of users that can be granted access to database objects
+# PostgreSQL utilize the existing Linux system uuser accounts to authenticate PostgreSQL users.
+
+##########
+NOTE:
+Compiling a source code package requires that you ahve the C software development package loaded onto your Linux system.
+These days  this is fairly common thing for servers, but it may not be loaded if you're using a desktop Linux distribution.
+
+

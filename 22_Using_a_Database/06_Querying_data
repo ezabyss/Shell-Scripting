@@ -1,0 +1,6 @@
+
+# SELECT * FROM TABLE; # selects all data from table
+SELECT * FROM employees;
+
+# SELECT * FROM TABLE WHERE CONDITION; # Shows all data that match with the condition
+SELECT * FROM employees WHERE salary > 10000;
